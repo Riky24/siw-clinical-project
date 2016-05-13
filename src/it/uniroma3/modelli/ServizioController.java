@@ -18,7 +18,7 @@ public class ServizioController extends HttpServlet {
 			throws ServletException, IOException {
 
 		/*// leggo i parametri
-		//String nome = request.getParameter("nome");
+		//String nome = request.getParameter("nome");.
 		//String descrizione = request.getParameter("descrizione");
 		//String codice = request.getParameter("codice");
 		//String costo = request.getParameter("costo");
