@@ -2,7 +2,7 @@ package it.uniroma3.modelli;
 
 import java.util.Map;
 
-//prova di commit
+//prova di commit.
 public class Servizio {
 	private String codice;
 	private String nome;
