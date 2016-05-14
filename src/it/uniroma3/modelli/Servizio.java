@@ -6,7 +6,7 @@ public class Servizio {
 	private String codice;
 	private String nome;
 	private String descrizione;
-	//gdsgds
+	//gdsgdsf
 	private String costo;
 	private Map<String, String> prerequisiti;
 
