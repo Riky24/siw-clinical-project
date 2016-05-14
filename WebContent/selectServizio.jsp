@@ -15,10 +15,10 @@
 		<button type="submit" name="servizio2" class="btn btn-default"
 			value='${ param["servizio2"]}'>servizio2</button>
 			
-		<button type="submit" name="servizio2" class="btn btn-default"
+		<button type="submit" name="servizio3" class="btn btn-default"
 			value='${ param["servizio3"]}'>servizio3</button>
 			
-		<button type="submit" name="servizio2" class="btn btn-default"
+		<button type="submit" name="servizio4" class="btn btn-default"
 			value='${ param["servizio4"]}'>servizio4</button>
 	</form>
 </body>
