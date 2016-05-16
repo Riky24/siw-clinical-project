@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/controllerServizio")
 public class ServizioController extends HttpServlet {
 
-	//
+
+	
 	//private static final long serialVersionUID = 1L;
-	//
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 
@@ -45,13 +46,11 @@ public class ServizioController extends HttpServlet {
 			nextPage = "/NewStudente.jsp";
 		}
 		else{
-
 			//tutti i dati sono corretti
 			Servizio servizio = new Servizio();
 			servizio.setCognome(descrizione);
 			servizio.setNome(nome);
 			servizio.setMatricola(codice);
-
 			request.setAttribute("studente", servizio);
 			nextPage = "/studente.jsp";
 		}
