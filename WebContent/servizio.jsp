@@ -12,7 +12,7 @@
 	<p>Descrizione: ${servizio.descrizione};</p>
 	<p>Costo: ${servizio.costo};</p>
 	<p>Prerequisiti: ${servizio.prerequisiti};</p>
-	<form action=http://localhost:8080/Clinica/selectServizio.jsp>
+	<form action=selectServizio.jsp>
 		<input type="submit" value="back">
 	</form>
 </body>
