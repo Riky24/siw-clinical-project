@@ -1,4 +1,4 @@
-package it.uniroma3.modelli;
+package it.uniroma3.controller;
 
 public class CreatExame {
 
