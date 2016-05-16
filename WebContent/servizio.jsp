@@ -12,11 +12,7 @@
 	<p>Descrizione: ${servizio.descrizione};</p>
 	<p>Costo: ${servizio.costo};</p>
 	<p>Prerequisiti: ${servizio.prerequisiti};</p>
-<<<<<<< HEAD
 	<form action=http://localhost:8080/siw-clinical-project/selectServizio.jsp>
-=======
-	<form action=http://localhost:8080/Clinica/selectServizio.jsp>
->>>>>>> branch 'master' of https://github.com/Riky24/siw-clinical-project
 		<input type="submit" value="back">
 	</form>
 </body>
