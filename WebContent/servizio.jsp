@@ -11,7 +11,8 @@
 	<p>Nome: ${servizio.nome};</p>
 	<p>Descrizione: ${servizio.descrizione};</p>
 	<p>Costo: ${servizio.costo};</p>
-	<form action=http://localhost:8080/clinica/selectServizio.jsp>
+	<p>Prerequisiti: ${servizio.prerequisiti};</p>
+	<form action=http://localhost:8080/siw-clinical-project/selectServizio.jsp>
 		<input type="submit" value="back">
 	</form>
 </body>

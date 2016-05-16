@@ -1,5 +1,5 @@
-package it.uniroma3.modelli;
-
-public class CreatExame {
-
-}
+//package it.uniroma3.modelli;
+//
+//public class CreatExame {
+//
+//}

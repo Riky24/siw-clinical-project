@@ -1,6 +1,7 @@
 package it.uniroma3.modelli;
 
 import java.io.IOException;
+import java.nio.channels.SelectableChannel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,47 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ServizioController extends HttpServlet {
 
 
-	
-	//private static final long serialVersionUID = 1L;
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 
-		/*// leggo i parametri
-		//String nome = request.getParameter("nome");
-		//String descrizione = request.getParameter("descrizione");
-		//String codice = request.getParameter("codice");
-		//String costo = request.getParameter("costo");
 		
-		//verifica dei dati
-		boolean ciSonoErrori = false;
-		String nextPage = null;
-		if(codice.equals("")){
-			ciSonoErrori = true;
-			request.setAttribute("matricolaError", "Matricola obbligatoria");
-		}
-		if(nome.equals("")){
-			ciSonoErrori = true;
-			request.setAttribute("nomeError", "Nome obbligatorio");
-		}
-		if(descrizione.equals("")){
-			ciSonoErrori = true;
-			request.setAttribute("cognomeError", "Cognome obbligatorio");
-		}
-		
-		if(ciSonoErrori){
-			nextPage = "/NewStudente.jsp";
-		}
-		else{
-			//tutti i dati sono corretti
-			Servizio servizio = new Servizio();
-			servizio.setCognome(descrizione);
-			servizio.setNome(nome);
-			servizio.setMatricola(codice);
-			request.setAttribute("studente", servizio);
-			nextPage = "/studente.jsp";
-		}
-		*/
 		
 		String nextPage = null;
 		
@@ -64,22 +28,51 @@ public class ServizioController extends HttpServlet {
 		servizio1.setNome("servizio1");
 		servizio1.setCodice("codice");
 		servizio1.setCosto("costo");
-		//servizio.setPrerequisito("digiuno 12", "il paziente deve essere a digiuno da 12 ore");
+		servizio1.setPrerequisito("chiave1", "prereqisito1");
+		servizio1.setPrerequisito("chiave2", "prereqisito2");
 		
 		Servizio servizio2 = new Servizio();
 		servizio2.setDescrizione("descrizione");
 		servizio2.setNome("servizio2");
 		servizio2.setCodice("codice");
 		servizio2.setCosto("costo");
+		servizio2.setPrerequisito("chiave1", "prereqisito1");
+		servizio2.setPrerequisito("chiave2", "prereqisito2");
+		
+		Servizio servizio3 = new Servizio();
+		servizio3.setDescrizione("descrizione");
+		servizio3.setNome("servizio3");
+		servizio3.setCodice("codice");
+		servizio3.setCosto("costo");
+		servizio3.setPrerequisito("chiave1", "prereqisito1");
+		servizio3.setPrerequisito("chiave2", "prereqisito2");
+		
+		Servizio servizio4 = new Servizio();
+		servizio4.setDescrizione("descrizione");
+		servizio4.setNome("servizio4");
+		servizio4.setCodice("codice");
+		servizio4.setCosto("costo");
+		servizio4.setPrerequisito("chiave1", "prereqisito1");
+		servizio4.setPrerequisito("chiave2", "prereqisito2");
 		
 		//selezione servizio
 		String serv = request.getParameter("servizio");
-		System.out.println(serv);
-		/*if(serv.equals("servizio1"))
-			request.setAttribute("servizio", servizio1);
-		else request.setAttribute("servizio", servizio2);
-		*/
-		request.setAttribute("servizio", servizio1);
+		Servizio servizio = null;
+		switch(serv){
+		case "servizio1":
+			servizio = servizio1;
+			break;
+		case "servizio2":
+			servizio = servizio2;
+			break;
+		case "servizio3":
+			servizio = servizio3;
+			break;
+		case "servizio4":
+			servizio = servizio4;
+			break;
+		}
+		request.setAttribute("servizio", servizio);
 
 		nextPage = "/servizio.jsp";
 

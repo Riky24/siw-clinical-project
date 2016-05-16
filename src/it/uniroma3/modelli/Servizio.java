@@ -1,5 +1,6 @@
 package it.uniroma3.modelli;
 
+import java.util.HashMap;
 import java.util.Map;
 
 //prova di commit.
@@ -7,13 +8,16 @@ public class Servizio {
 	private String codice;
 	private String nome;
 	private String descrizione;
-	
 	private String costo;
-	private Map<String, String> prerequisiti;
+	private String prerequisiti;
+	private Map<String, String> prerequisitiMap;
 
-	public Servizio(){}
+	public Servizio(){
+		this.prerequisitiMap = new HashMap<>();
+		prerequisiti = null;
+	}
 
-	
+
 	public String getCodice() {
 		return codice;
 	}
@@ -37,28 +41,34 @@ public class Servizio {
 	public void setDescrizione(String newDescrizione) {
 		this.descrizione = newDescrizione;
 	}
-	
+
 	public String getCosto(){
 		return this.costo;
 	}
-	
+
 	public void setCosto(String newCosto){
 		this.costo = newCosto;
 	}
-	
+
 	public Map<String, String> getPrerequisiti(){
+		return this.prerequisitiMap;
+	}
+
+	public String getPrerequisitiString(){
 		return this.prerequisiti;
 	}
-	
+
 	public void setPrerequisito(String chiave, String valore){
-		this.prerequisiti.put(chiave, valore);
+		this.prerequisitiMap.put(chiave, valore);
+		if (this.prerequisiti==null) this.prerequisiti = valore + " /n ";
+		else this.prerequisiti = this.prerequisiti + valore + " /n ";
 	}
-	
+
 	public String toString() {
 		return "[" + this.getCodice() + ", " + 
 				this.getNome() + ", " + 
-					this.getDescrizione() + ", " + 
-				        this.getCosto();
-		
+				this.getDescrizione() + ", " + 
+				this.getCosto();
+
 	}
 }
