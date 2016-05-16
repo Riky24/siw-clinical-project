@@ -1,7 +1,6 @@
 package it.uniroma3.modelli;
 
 import java.io.IOException;
-import java.nio.channels.SelectableChannel;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -14,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/controllerServizio")
 public class ServizioController extends HttpServlet {
 
+
+	
+	//private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
