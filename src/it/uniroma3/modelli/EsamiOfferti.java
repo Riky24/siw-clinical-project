@@ -50,18 +50,18 @@ public class EsamiOfferti {
 		this.costo = newCosto;
 	}
 
-	public Map<String, String> getPrerequisiti(){
-		return this.prerequisitiMap;
+	public String getPrerequisiti(){
+		return this.prerequisiti;
 	}
 
-	public String getPrerequisitiString(){
-		return this.prerequisiti;
+	public Map<String, String> getPrerequisitiMap(){
+		return this.prerequisitiMap;
 	}
 
 	public void setPrerequisito(String chiave, String valore){
 		this.prerequisitiMap.put(chiave, valore);
-		if (this.prerequisiti==null) this.prerequisiti = valore + " /n ";
-		else this.prerequisiti = this.prerequisiti + valore + " /n ";
+		if (this.prerequisiti==null) this.prerequisiti = valore + " \n";
+		else this.prerequisiti = this.prerequisiti + valore + " \n";
 	}
 
 	public String toString() {
