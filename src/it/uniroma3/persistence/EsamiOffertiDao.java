@@ -1,7 +1,7 @@
 package it.uniroma3.persistence;
 
 import java.util.List;
-import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.EsamiOfferti; //MODIFICARE NOME E CODICE CLASSE servizi in EsamiOfferti jpa
 
 public class EsamiOffertiDao {
 
