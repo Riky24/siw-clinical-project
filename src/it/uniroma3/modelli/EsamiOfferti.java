@@ -1,10 +1,8 @@
 package it.uniroma3.modelli;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +18,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class EsamiOfferti {
+	
 	public EsamiOfferti(){
 		this.prerequisiti = new ArrayList<>();
 	}

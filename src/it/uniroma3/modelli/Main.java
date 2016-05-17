@@ -5,8 +5,7 @@ package it.uniroma3.modelli;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-
-import it.uniroma3.persistence.EsamiOffertiDao;
+import it.uniroma3.persistence.EsamiOffertiDaoJPA;
 
 public class Main {
 
@@ -14,7 +13,7 @@ public class Main {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 
-		EsamiOffertiDao esamiOffertiDao = new EsamiOffertiDao(emf);
+		EsamiOffertiDaoJPA esamiOffertiDao = new EsamiOffertiDaoJPA(emf);
 
 
 		EsamiOfferti e = new EsamiOfferti();
