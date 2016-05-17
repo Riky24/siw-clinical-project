@@ -10,12 +10,14 @@ import javax.persistence.EntityTransaction;
 import it.uniroma3.modelli.EsamiOfferti;
 
 public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
+	//STABILISCO LA CONNESSIONE CON IL DATABASE
 	private  static EntityManagerFactory emf;
 
 	public EsamiOffertiDaoJPA(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
 
+	//INIZIO A FARE LE VARIE RICHIESTE DI:
 	public void save(EsamiOfferti c) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -25,6 +27,7 @@ public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
 		em.close();
 	}
 
+	//pongo id come chiave primaria
 	public EsamiOfferti findById(long id) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
@@ -54,6 +57,7 @@ public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
 		em.close();
 	}
 
+	//faccio una query per la lista degli ordini
 	@SuppressWarnings("unchecked")
 	public List<EsamiOfferti> findAll() {
 		EntityManager em = emf.createEntityManager();
