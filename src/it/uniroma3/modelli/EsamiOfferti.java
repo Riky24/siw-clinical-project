@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 //prova di commit.
-public class Servizio {
+public class EsamiOfferti {
 	private String codice;
 	private String nome;
 	private String descrizione;
@@ -12,7 +12,7 @@ public class Servizio {
 	private String prerequisiti;
 	private Map<String, String> prerequisitiMap;
 
-	public Servizio(){
+	public EsamiOfferti(){
 		this.prerequisitiMap = new HashMap<>();
 		prerequisiti = null;
 	}
