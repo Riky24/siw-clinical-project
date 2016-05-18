@@ -1,24 +1,21 @@
 package it.uniroma3.persistence;
 
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.Prerequisito;
 
-public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
-	//STABILISCO LA CONNESSIONE CON IL DATABASE
+public class PrerequisitoDao implements Dao<Prerequisito>{
 	private  static EntityManagerFactory emf;
 
-	public EsamiOffertiDaoJPA(EntityManagerFactory emf) {
+	public PrerequisitoDao(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
 
-	//INIZIO A FARE LE VARIE RICHIESTE DI:
-	public void save(EsamiOfferti c) {
+	public void save(Prerequisito c) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -27,28 +24,27 @@ public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
 		em.close();
 	}
 
-	//pongo id come chiave primaria
-	public EsamiOfferti findById(long id) {
+	public Prerequisito findById(long id) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		EsamiOfferti c = em.find(EsamiOfferti.class, id);
+		Prerequisito c = em.find(Prerequisito.class, id);
 		tx.commit();
 		em.close();
 		return c;
 	}
 
-	public void delete(EsamiOfferti c) {
+	public void delete(Prerequisito c) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		EsamiOfferti toRemove = em.merge(c);
+		Prerequisito toRemove = em.merge(c);
 		em.remove(toRemove);
 		tx.commit();		
 		em.close();
 	}
 
-	public void update(EsamiOfferti c) {
+	public void update(Prerequisito c) {
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -57,11 +53,10 @@ public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
 		em.close();
 	}
 
-	//faccio una query per la lista degli ordini
 	@SuppressWarnings("unchecked")
-	public List<EsamiOfferti> findAll() {
+	public List<Prerequisito> findAll() {
 		EntityManager em = emf.createEntityManager();
-		List<EsamiOfferti> result = em.createNamedQuery("EsamiOfferti.findAll").getResultList();
+		List<Prerequisito> result = em.createNamedQuery("Prerequisito.findAll").getResultList();
 		em.close();
 		return result;
 	}
@@ -71,3 +66,4 @@ public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
 	}
 
 }
+
