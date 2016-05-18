@@ -1,54 +1,75 @@
 package it.uniroma3.persistence;
 
-import it.uniroma3.modelli.PazienteRegistrato;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-public class PazienteRegistratoDaoJPA implements PazienteRegistartoDao {
+import it.uniroma3.modelli.PazienteRegistrato;
 
+public class PazienteRegistratoDaoJPA implements Dao<PazienteRegistrato>{
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
-	private EntityManager em;
-	private EntityTransaction tx;
+	private  static EntityManagerFactory emf;
 
-	public PazienteRegistratoDaoJPA(EntityManager em) {
-		this.em=em;
+	public PazienteRegistratoDaoJPA(EntityManagerFactory emf) {
+		this.emf = emf;
 	}
-//INIZIO A FARE LE VARIE RICHIESTE DI:
-	@Override
-	public void save(PazienteRegistrato paziente) {//SALVATAGGIO
-		tx = em.getTransaction();
+
+	//INIZIO A FARE LE VARIE RICHIESTE DI:
+	public void save(PazienteRegistrato p) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
 		tx.begin();
-		em.persist(paziente);
+		em.persist(p);
 		tx.commit();
+		em.close();
 	}
-//pongo id come chiave primaria
-	@Override
-	public PazienteRegistrato findByPrimaryKey(Long id) {
-		return em.find(PazienteRegistrato.class, id);
+
+	//pongo id come chiave primaria
+	public PazienteRegistrato findById(long id) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		PazienteRegistrato p = em.find(PazienteRegistrato.class, id);
+		tx.commit();
+		em.close();
+		return p;
 	}
-//faccio una query per la lista degli ordini
-	@Override
+
+	public void delete(PazienteRegistrato p) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		PazienteRegistrato toRemove = em.merge(p);
+		em.remove(toRemove);
+		tx.commit();		
+		em.close();
+	}
+
+	public void update(PazienteRegistrato p) {
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+		tx.begin();
+		em.merge(p);
+		tx.commit();
+		em.close();
+	}
+
+	//faccio una query per la lista degli ordini
+	@SuppressWarnings("unchecked")
 	public List<PazienteRegistrato> findAll() {
-		List<PazienteRegistrato> paziente = em.createQuery("SELECT p FROM PazienteRegistrato p").getResultList();
-		return paziente;
+		EntityManager em = emf.createEntityManager();
+		List<PazienteRegistrato> result = em.createNamedQuery("PazienteRegistrato.findAll").getResultList();
+		em.close();
+		return result;
 	}
 
-	@Override
-	public void update(PazienteRegistrato paziente) {//AGGIORNAMENTO
-		tx = em.getTransaction();
-		tx.begin();
-		em.merge(paziente);
-		tx.commit();
+	public void closeEmf() {
+		emf.close();
 	}
 
-	@Override
-	public void delete(PazienteRegistrato paziente) {//ELIMINAZIONE
-		tx = this.em.getTransaction();
-		tx.begin();
-		em.remove(paziente);
-		tx.commit();
-	}
+
+
 }

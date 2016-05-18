@@ -6,14 +6,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import it.uniroma3.persistence.EsamiOffertiDaoJPA;
+import it.uniroma3.persistence.PazienteRegistratoDaoJPA;
 
 public class Main {
 
 	public static void main(String[] args) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-
 		EsamiOffertiDaoJPA esamiOffertiDao = new EsamiOffertiDaoJPA(emf);
+		PazienteRegistartoDaoJPA pazienteDao = new PazienteRegistratoDaoJPA(emf);
 
 
 		EsamiOfferti e = new EsamiOfferti();
@@ -25,8 +26,16 @@ public class Main {
 		e.setCosto("70 euro");
 		e.addPrerequisito(p1);
 		e.addPrerequisito(p2);
+		
+		PazienteRegistrato p = new PazienteRegistrato();
+		p.setNome("Luca");
+		p.setCognome("Iannotta");
+		p.setCodiceFiscale("nnt25mmmm");
 
 		esamiOffertiDao.save(e);
+		/*PazienteRegistartoDaoJPA pazienteJPA = new PazienteRegistartoDaoJPA(em);
+		pazienteJPA.save(paziente);*/
+		em.close();
 		emf.close();
 	}
 

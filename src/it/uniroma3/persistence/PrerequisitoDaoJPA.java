@@ -8,10 +8,10 @@ import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.Prerequisito;
 
-public class PrerequisitoDao implements Dao<Prerequisito>{
+public class PrerequisitoDaoJPA implements Dao<Prerequisito>{
 	private  static EntityManagerFactory emf;
 
-	public PrerequisitoDao(EntityManagerFactory emf) {
+	public PrerequisitoDaoJPA(EntityManagerFactory emf) {
 		this.emf = emf;
 	}
 
