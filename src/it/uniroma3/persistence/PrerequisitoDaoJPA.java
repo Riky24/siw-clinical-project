@@ -1,69 +1,57 @@
 package it.uniroma3.persistence;
 
+
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.Prerequisito;
 
-public class PrerequisitoDaoJPA implements Dao<Prerequisito>{
-	private  static EntityManagerFactory emf;
 
-	public PrerequisitoDaoJPA(EntityManagerFactory emf) {
-		this.emf = emf;
+
+public class PrerequisitoDaoJPA implements PrerequisitoDao {
+	//STABILISCO LA CONNESSIONE CON IL DATABASE
+	private EntityManager em;
+	private EntityTransaction tx;
+
+	public PrerequisitoDaoJPA(EntityManager em) {
+		this.em=em;
 	}
-
-	public void save(Prerequisito c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+//INIZIO A FARE LE VARIE RICHIESTE DI:
+	@Override
+	public void save(Prerequisito prerequisito) {//SALVATAGGIO
+		tx = em.getTransaction();
 		tx.begin();
-		em.persist(c);
+		em.persist(prerequisito);
 		tx.commit();
-		em.close();
 	}
-
-	public Prerequisito findById(long id) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		Prerequisito c = em.find(Prerequisito.class, id);
-		tx.commit();
-		em.close();
-		return c;
+//pongo id come chiave primaria
+	@Override
+	public Prerequisito findByPrimaryKey(Long id) {
+		return em.find(Prerequisito.class, id);
 	}
-
-	public void delete(Prerequisito c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		Prerequisito toRemove = em.merge(c);
-		em.remove(toRemove);
-		tx.commit();		
-		em.close();
-	}
-
-	public void update(Prerequisito c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		em.merge(c);
-		tx.commit();
-		em.close();
-	}
-
-	@SuppressWarnings("unchecked")
+//faccio una query per la lista degli ordini
+	@Override
 	public List<Prerequisito> findAll() {
-		EntityManager em = emf.createEntityManager();
-		List<Prerequisito> result = em.createNamedQuery("Prerequisito.findAll").getResultList();
-		em.close();
-		return result;
+		List<Prerequisito> prerequisito = em.createQuery("SELECT o FROM prerequisito o").getResultList();
+		return prerequisito;
 	}
 
-	public void closeEmf() {
-		emf.close();
+	@Override
+	public void update(Prerequisito prerequisito) {//AGGIORNAMENTO
+		tx = em.getTransaction();
+		tx.begin();
+		em.merge(prerequisito);
+		tx.commit();
 	}
 
+	@Override
+	public void delete(Prerequisito prerequisito) {//ELIMINAZIONE
+		tx = this.em.getTransaction();
+		tx.begin();
+		em.remove(prerequisito);
+		tx.commit();
+	}
 }
-

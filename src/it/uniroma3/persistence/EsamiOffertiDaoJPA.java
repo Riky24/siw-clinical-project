@@ -1,73 +1,57 @@
 package it.uniroma3.persistence;
 
 
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.EsamiOfferti;
 
-public class EsamiOffertiDaoJPA implements Dao<EsamiOfferti>{
+
+
+public class EsamiOffertiDaoJPA implements EsamiOffertiDao {
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
-	private  static EntityManagerFactory emf;
+	private EntityManager em;
+	private EntityTransaction tx;
 
-	public EsamiOffertiDaoJPA(EntityManagerFactory emf) {
-		this.emf = emf;
+	public EsamiOffertiDaoJPA(EntityManager em) {
+		this.em=em;
 	}
-
-	//INIZIO A FARE LE VARIE RICHIESTE DI:
-	public void save(EsamiOfferti c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
+//INIZIO A FARE LE VARIE RICHIESTE DI:
+	@Override
+	public void save(EsamiOfferti esamiOfferti) {//SALVATAGGIO
+		tx = em.getTransaction();
 		tx.begin();
-		em.persist(c);
+		em.persist(esamiOfferti);
 		tx.commit();
-		em.close();
 	}
-
-	//pongo id come chiave primaria
-	public EsamiOfferti findById(long id) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		EsamiOfferti c = em.find(EsamiOfferti.class, id);
-		tx.commit();
-		em.close();
-		return c;
+//pongo id come chiave primaria
+	@Override
+	public EsamiOfferti findByPrimaryKey(Long id) {
+		return em.find(EsamiOfferti.class, id);
 	}
-
-	public void delete(EsamiOfferti c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		EsamiOfferti toRemove = em.merge(c);
-		em.remove(toRemove);
-		tx.commit();		
-		em.close();
-	}
-
-	public void update(EsamiOfferti c) {
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
-		em.merge(c);
-		tx.commit();
-		em.close();
-	}
-
-	//faccio una query per la lista degli ordini
-	@SuppressWarnings("unchecked")
+//faccio una query per la lista degli ordini
+	@Override
 	public List<EsamiOfferti> findAll() {
-		EntityManager em = emf.createEntityManager();
-		List<EsamiOfferti> result = em.createNamedQuery("EsamiOfferti.findAll").getResultList();
-		em.close();
-		return result;
+		List<EsamiOfferti> esamiOfferti = em.createQuery("SELECT o FROM esamiofferti o").getResultList();
+		return esamiOfferti;
 	}
 
-	public void closeEmf() {
-		emf.close();
+	@Override
+	public void update(EsamiOfferti esamiOfferti) {//AGGIORNAMENTO
+		tx = em.getTransaction();
+		tx.begin();
+		em.merge(esamiOfferti);
+		tx.commit();
 	}
 
+	@Override
+	public void delete(EsamiOfferti esamiOfferti) {//ELIMINAZIONE
+		tx = this.em.getTransaction();
+		tx.begin();
+		em.remove(esamiOfferti);
+		tx.commit();
+	}
 }

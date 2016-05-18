@@ -32,9 +32,9 @@ public class PazienteRegistrato {
 	private String codiceFiscale;
 				
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
-	@JoinColumn(name = "prerequisiti_id")
-	private List<Prerequisito> prerequisiti;
+//	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+//	@JoinColumn(name = "prerequisiti_id")
+//	private List<Prerequisito> prerequisiti;
 
 	public Long getId() {
 		return id;

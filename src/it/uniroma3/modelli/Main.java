@@ -2,6 +2,7 @@ package it.uniroma3.modelli;
 
 
 
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -13,8 +14,9 @@ public class Main {
 	public static void main(String[] args) {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-		EsamiOffertiDaoJPA esamiOffertiDao = new EsamiOffertiDaoJPA(emf);
-		PazienteRegistartoDaoJPA pazienteDao = new PazienteRegistratoDaoJPA(emf);
+		EntityManager em = emf.createEntityManager();
+		
+		
 
 
 		EsamiOfferti e = new EsamiOfferti();
@@ -32,9 +34,16 @@ public class Main {
 		p.setCognome("Iannotta");
 		p.setCodiceFiscale("nnt25mmmm");
 
+		
+		
+		EsamiOffertiDaoJPA esamiOffertiDao = new EsamiOffertiDaoJPA(em);
 		esamiOffertiDao.save(e);
-		/*PazienteRegistartoDaoJPA pazienteJPA = new PazienteRegistartoDaoJPA(em);
-		pazienteJPA.save(paziente);*/
+
+		PazienteRegistratoDaoJPA pazienteDao = new PazienteRegistratoDaoJPA(em);
+		pazienteDao.save(p);
+		
+		
+		
 		em.close();
 		emf.close();
 	}

@@ -4,12 +4,12 @@ import it.uniroma3.modelli.PazienteRegistrato; //DA CREARE CLASSE PazienteRegist
 
 import java.util.List;
 
-public class PazienteRegistratoDao {
+public interface PazienteRegistratoDao {
 
-	public void save(PazienteRegistratoDao paziente);  // Create
-	public PazienteRegistratoDao findByPrimaryKey(Long id);     // Retrieve
-	public List<EsameOfferti> findAll();       
-	public void update(PazienteRegistratoDao paziente); //Update
-	public void delete(PazienteRegistratoDao paziente); //Delete
+	public void save(PazienteRegistrato paziente);  // Create
+	public PazienteRegistrato findByPrimaryKey(Long id);     // Retrieve
+	public List<PazienteRegistrato> findAll();       
+	public void update(PazienteRegistrato paziente); //Update
+	public void delete(PazienteRegistrato paziente); //Delete
 	
 }
