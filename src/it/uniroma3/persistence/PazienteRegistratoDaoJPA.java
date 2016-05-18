@@ -6,7 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.modelli.PazienteRegistrato;
+import it.uniroma3.modelli.Utente;
 
 public class PazienteRegistratoDaoJPA implements PazienteRegistratoDao {
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
@@ -18,37 +18,37 @@ public class PazienteRegistratoDaoJPA implements PazienteRegistratoDao {
 	}
 //INIZIO A FARE LE VARIE RICHIESTE DI:
 	@Override
-	public void save(PazienteRegistrato pazienteRegistrato) {//SALVATAGGIO
+	public void save(Utente utente) {//SALVATAGGIO
 		tx = em.getTransaction();
 		tx.begin();
-		em.persist(pazienteRegistrato);
+		em.persist(utente);
 		tx.commit();
 	}
 //pongo id come chiave primaria
 	@Override
-	public PazienteRegistrato findByPrimaryKey(Long id) {
-		return em.find(PazienteRegistrato.class, id);
+	public Utente findByPrimaryKey(Long id) {
+		return em.find(Utente.class, id);
 	}
 //faccio una query per la lista degli ordini
 	@Override
-	public List<PazienteRegistrato> findAll() {
-		List<PazienteRegistrato> pazienteRegistrato = em.createQuery("SELECT o FROM pazienteregistrato o").getResultList();
-		return pazienteRegistrato;
+	public List<Utente> findAll() {
+		List<Utente> utente = em.createQuery("SELECT o FROM pazienteregistrato o").getResultList();
+		return utente;
 	}
 
 	@Override
-	public void update(PazienteRegistrato pazienteRegistrato) {//AGGIORNAMENTO
+	public void update(Utente utente) {//AGGIORNAMENTO
 		tx = em.getTransaction();
 		tx.begin();
-		em.merge(pazienteRegistrato);
+		em.merge(utente);
 		tx.commit();
 	}
 
 	@Override
-	public void delete(PazienteRegistrato pazienteRegistrato) {//ELIMINAZIONE
+	public void delete(Utente utente) {//ELIMINAZIONE
 		tx = this.em.getTransaction();
 		tx.begin();
-		em.remove(pazienteRegistrato);
+		em.remove(utente);
 		tx.commit();
 	}
 }

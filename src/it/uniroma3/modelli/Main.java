@@ -29,7 +29,7 @@ public class Main {
 		e.addPrerequisito(p1);
 		e.addPrerequisito(p2);
 		
-		PazienteRegistrato p = new PazienteRegistrato();
+		Utente p = new Utente();
 		p.setNome("Luca");
 		p.setCognome("Iannotta");
 		p.setCodiceFiscale("nnt25mmmm");

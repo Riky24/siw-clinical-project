@@ -14,9 +14,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class PazienteRegistrato {
+public class Utente {
 	
-	public PazienteRegistrato(){
+	public Utente(){
 		//this.prerequisiti = new ArrayList<>();
 	}
 	
@@ -32,6 +32,15 @@ public class PazienteRegistrato {
 	
 	@Column(nullable = false)
 	private String codiceFiscale;
+	
+	@Column(nullable = false)
+	private String username;
+	
+	@Column(nullable = false)
+	private String password;
+	
+	@Column(nullable = false)
+	private String ruolo;        //  admin o user
 				
 	
 //	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
@@ -64,6 +73,30 @@ public class PazienteRegistrato {
 
 	public void setCodiceFiscale(String codiceFiscale){
 		this.codiceFiscale = codiceFiscale;
+	}
+	
+	public String getUsername(){
+		return this.username;
+	}
+
+	public void setUsername(String username){
+		this.username = username;
+	}
+	
+	public String getPassword(){
+		return this.username;
+	}
+
+	public void setPassword(String password){
+		this.password = password;
+	}
+	
+	public String getRuolo(){
+		return this.ruolo;
+	}
+
+	public void setRuolo(String ruolo){
+		this.ruolo = ruolo;
 	}
 
 	@Override
