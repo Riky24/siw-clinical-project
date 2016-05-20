@@ -21,5 +21,7 @@
 		<button type="submit" name="login" class="btn btn-default"
 			value="login">Login</button>
 	</form>
+	<p>Amministratore: user - mario, password - rossi</p>
+	<p>Utente Registrato: user - rossi, password - mario</p>
 </body>
 </html>

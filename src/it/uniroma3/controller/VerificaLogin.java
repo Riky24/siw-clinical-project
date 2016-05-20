@@ -12,7 +12,7 @@ public class VerificaLogin {
 	private List<Utente> list;
 	
 	public VerificaLogin(){
-		list = new LinkedList<>();
+		this.list = new LinkedList<>();
 		
 		this.a.setUsername("mario");
 		this.a.setPassword("rossi");
@@ -22,20 +22,20 @@ public class VerificaLogin {
 		this.u.setPassword("mario");
 		this.u.setRuolo("user");
 		
-		list.add(this.a);
-		list.add(this.u);
+		this.list.add(this.a);
+		this.list.add(this.u);
 	}
 	
 	public Utente login(String username,String password){
 		Utente utente = null;
 		for(Utente x: this.list){
 			if(x.getUsername().equals(username) && x.getPassword().equals(password)){
-				Utente u = new Utente();
-				u.setUsername(x.getUsername());
-				u.setPassword(x.getPassword());
-				u.setRuolo(x.getRuolo());
+				Utente corrente = new Utente();
+				corrente.setUsername(x.getUsername());
+				corrente.setPassword(x.getPassword());
+				corrente.setRuolo(x.getRuolo());
 				// ...cosi per ogni valore...
-				utente = u;
+				utente = corrente;
 			}
 		}
 		return utente;

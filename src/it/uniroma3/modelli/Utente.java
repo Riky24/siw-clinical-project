@@ -84,7 +84,7 @@ public class Utente {
 	}
 	
 	public String getPassword(){
-		return this.username;
+		return this.password;
 	}
 
 	public void setPassword(String password){
