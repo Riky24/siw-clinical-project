@@ -3,7 +3,14 @@ package it.uniroma3.controller;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.Prerequisito;
 import it.uniroma3.modelli.Utente;
+import it.uniroma3.persistence.EsamiOffertiDaoJPA;
 
 public class VerificaLogin {
 	
@@ -24,6 +31,7 @@ public class VerificaLogin {
 		
 		this.list.add(this.a);
 		this.list.add(this.u);
+		
 	}
 	
 	public Utente login(String username,String password){

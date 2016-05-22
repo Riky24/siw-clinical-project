@@ -8,9 +8,9 @@
 <title>Riepilogo dati</title>
 </head>
 <body>
-Username: ${utente.username};
-Password: ${utente.password};
-Ruolo: ${utente.ruolo};
+<p>Username: ${utente.username};</p>
+<p>Password: ${utente.password};</p>
+<p>Ruolo: ${utente.ruolo};</p>
 
 <form action="/siw-clinical-project/logoutcontroller" method="get">
 		<button type="submit" name="logout" class="btn btn-default"
