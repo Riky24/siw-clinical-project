@@ -8,12 +8,12 @@ import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.Utente;
 
-public class PazienteRegistratoDaoJPA implements PazienteRegistratoDao {
+public class UtenteDaoJPA implements UtenteDao {
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
 	private EntityManager em;
 	private EntityTransaction tx;
 
-	public PazienteRegistratoDaoJPA(EntityManager em) {
+	public UtenteDaoJPA(EntityManager em) {
 		this.em=em;
 	}
 //INIZIO A FARE LE VARIE RICHIESTE DI:

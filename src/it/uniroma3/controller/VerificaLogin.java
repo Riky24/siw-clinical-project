@@ -11,12 +11,14 @@ import it.uniroma3.modelli.EsamiOfferti;
 import it.uniroma3.modelli.Prerequisito;
 import it.uniroma3.modelli.Utente;
 import it.uniroma3.persistence.EsamiOffertiDaoJPA;
+import it.uniroma3.persistence.UtenteDaoJPA;
 
 public class VerificaLogin {
 	
 	private Utente u = new Utente();
 	private Utente a = new Utente();
 	private List<Utente> list;
+	//private EntityManager em;
 	
 	public VerificaLogin(){
 		this.list = new LinkedList<>();
@@ -32,11 +34,21 @@ public class VerificaLogin {
 		this.list.add(this.a);
 		this.list.add(this.u);
 		
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
+		//em = emf.createEntityManager();
+		
 	}
+	
+	/*public List<Utente> getList(){
+		UtenteDaoJPA u = new UtenteDaoJPA(this.em);
+		List<Utente> lista = u.findAll();
+		return lista;
+	}*/
 	
 	public Utente login(String username,String password){
 		Utente utente = null;
-		for(Utente x: this.list){
+		//List<Utente> lista = this.getList();
+		for(Utente x: list){
 			if(x.getUsername().equals(username) && x.getPassword().equals(password)){
 				Utente corrente = new Utente();
 				corrente.setUsername(x.getUsername());
