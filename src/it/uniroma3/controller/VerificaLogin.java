@@ -1,5 +1,7 @@
 package it.uniroma3.controller;
 
+import java.math.*;
+import java.security.*;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class VerificaLogin {
 	private List<Utente> list;
 	//private EntityManager em;
 	
-	public VerificaLogin(){
+	public VerificaLogin() throws Exception{
 		this.list = new LinkedList<>();
 		
 		this.a.setUsername("mario");
@@ -45,7 +47,14 @@ public class VerificaLogin {
 		return lista;
 	}*/
 	
-	public Utente login(String username,String password){
+	public Utente login(String username,String p) throws Exception{
+		
+		//cripto la password inserita
+		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		md5.update(p.getBytes(),0,p.length());
+		String password = (new BigInteger(1,md5.digest()).toString(16));
+		
+		
 		Utente utente = null;
 		//List<Utente> lista = this.getList();
 		for(Utente x: list){

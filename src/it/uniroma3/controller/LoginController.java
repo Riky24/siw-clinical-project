@@ -21,7 +21,6 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 
 
-		VerificaLogin f = new VerificaLogin();
 
 		// leggo i parametri
 		String username = request.getParameter("username");
@@ -43,23 +42,30 @@ public class LoginController extends HttpServlet {
 			nextPage = "/effettuaLogin.jsp";
 		}
 		else{
-			Utente u = f.login(username, password);
-			if(u!= null){
+			Utente u;
+			try {
+				VerificaLogin f = new VerificaLogin();
+				u = f.login(username, password);
 
-				
-				HttpSession sessione = request.getSession();
-				sessione.setAttribute("utente", u);    // parametro utente accessibile da ogni classe
+				if(u!= null){
 
-				String ruolo = u.getRuolo();
-				if(ruolo.equals("admin")){
-					nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+
+					HttpSession sessione = request.getSession();
+					sessione.setAttribute("utente", u);    // parametro utente accessibile da ogni classe
+
+					String ruolo = u.getRuolo();
+					if(ruolo.equals("admin")){
+						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+					}
+					if(ruolo.equals("user")){
+						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+					}
+				}else{
+					request.setAttribute("loginError", "User o password errati");
+					nextPage = "/effettuaLogin.jsp";
 				}
-				if(ruolo.equals("user")){
-					nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
-				}
-			}else{
-				request.setAttribute("loginError", "User o password errati");
-				nextPage = "/effettuaLogin.jsp";
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
 		}
 

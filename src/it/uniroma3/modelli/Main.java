@@ -15,7 +15,7 @@ import it.uniroma3.persistence.PrerequisitoDaoJPA;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 		EntityManager em = emf.createEntityManager();
