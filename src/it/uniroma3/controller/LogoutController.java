@@ -17,7 +17,7 @@ import it.uniroma3.modelli.Utente;
 public class LogoutController extends HttpServlet {
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione = request.getSession();
 		Utente u  = (Utente) sessione.getAttribute("utente");
 		if(u!=null){

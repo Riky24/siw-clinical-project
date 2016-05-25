@@ -16,7 +16,7 @@
 		<input type="submit" value="consulta i propri esami effettuati">
 	</form>
 
-<form action="/siw-clinical-project/logoutcontroller" method="get">
+<form action="/siw-clinical-project/logoutcontroller" method="post">
 		<button type="submit" name="logout" class="btn btn-default"
 			value="logout">Logout</button>
 	</form>

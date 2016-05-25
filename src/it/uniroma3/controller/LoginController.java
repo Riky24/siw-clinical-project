@@ -17,7 +17,7 @@ import it.uniroma3.modelli.Utente;
 public class LoginController extends HttpServlet {
 
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 
