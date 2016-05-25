@@ -12,6 +12,10 @@
 <p>Password: ${utente.password};</p>
 <p>Ruolo: ${utente.ruolo};</p>
 
+<form action=DettaglioEsamiPaziente.jsp>
+		<input type="submit" value="consulta i propri esami effettuati">
+	</form>
+
 <form action="/siw-clinical-project/logoutcontroller" method="get">
 		<button type="submit" name="logout" class="btn btn-default"
 			value="logout">Logout</button>
