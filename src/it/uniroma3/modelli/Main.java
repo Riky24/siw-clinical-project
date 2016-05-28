@@ -9,13 +9,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import it.uniroma3.persistence.TipologiaEsameDaoJPA;
 import it.uniroma3.persistence.UtenteDaoJPA;
 import it.uniroma3.persistence.PrerequisitoDaoJPA;
+import it.uniroma3.persistence.TipologiaEsameDaoJPA;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
 		EntityManager em = emf.createEntityManager();
@@ -23,23 +23,23 @@ public class Main {
 
 
 
-		TipologiaEsame te1 = new TipologiaEsame();
+		TipologiaEsame e1 = new TipologiaEsame();
 		Prerequisito p11 = new Prerequisito("1 eye", "E' necessario avere almeno un occhio");
 		Prerequisito p12 = new Prerequisito("no lens", "Non si devono indossare lenti a contatto");
-		te1.setDescrizione("Esame della vista");
-		te1.setNome("vista");
-		te1.setCodice("vi");
-		te1.setCosto("70 euro");
-		te1.addPrerequisito(p11);
-		te1.addPrerequisito(p12);
+		e1.setDescrizione("Esame della vista");
+		e1.setNome("vista");
+		e1.setCodice("vi");
+		e1.setCosto("70 euro");
+		e1.addPrerequisito(p11);
+		e1.addPrerequisito(p12);
 
-		TipologiaEsame te2 = new TipologiaEsame();
+		TipologiaEsame e2 = new TipologiaEsame();
 		Prerequisito p21 = new Prerequisito("no breakfast", "Non bisogna aver fatto colazione il giorno dell'esame");
-		te2.setDescrizione("Esame del sangue");
-		te2.setNome("sangue");
-		te2.setCodice("sa");
-		te2.setCosto("20 euro");
-		te2.addPrerequisito(p21);
+		e2.setDescrizione("Esame del sangue");
+		e2.setNome("sangue");
+		e2.setCodice("sa");
+		e2.setCosto("20 euro");
+		e2.addPrerequisito(p21);
 
 
 
@@ -68,8 +68,8 @@ public class Main {
 
 
 		TipologiaEsameDaoJPA esamiOffertiDao = new TipologiaEsameDaoJPA(em);
-		esamiOffertiDao.save(te1);
-		esamiOffertiDao.save(te2);
+		esamiOffertiDao.save(e1);
+		esamiOffertiDao.save(e2);
 
 		
 		UtenteDaoJPA utentiDao = new UtenteDaoJPA(em);

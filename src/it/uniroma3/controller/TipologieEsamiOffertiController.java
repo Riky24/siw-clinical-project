@@ -46,18 +46,18 @@ public class TipologieEsamiOffertiController extends HttpServlet  {
 		ElencoEsamiOfferti eeo = new ElencoEsamiOfferti();
 		eeo.inizializza();
 		
-		String serv = request.getParameter("tipologiaEsame");
-		TipologiaEsame e = null;
-		switch(serv){
-		case "vista":
-			e = eeo.getEsami().get("vi");
-			break;
-		case "sangue":
-			e = eeo.getEsami().get("sa");
-			break;
-		}
+//		String serv = request.getParameter("tipologiaEsame");
+//		TipologiaEsame e = null;
+//		switch(serv){
+//		case "vista":
+//			e = eeo.getEsami().get("vi");
+//			break;
+//		case "sangue":
+//			e = eeo.getEsami().get("sa");
+//			break;
+//		}
 		
-		request.setAttribute("tipologiaEsame", e);
+//		request.setAttribute("tipologiaEsame", e);
 
 		nextPage = "/tipologiaEsameSelezionato.jsp";
 		

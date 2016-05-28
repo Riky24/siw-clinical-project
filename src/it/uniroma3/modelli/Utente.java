@@ -2,7 +2,9 @@ package it.uniroma3.modelli;
 
 //import java.util.ArrayList;
 import java.util.List;
-
+import java.math.BigInteger;
+import java.security.*;
+import java.math.*;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -87,8 +89,11 @@ public class Utente {
 		return this.password;
 	}
 
-	public void setPassword(String password){
-		this.password = password;
+	public void setPassword(String password) throws Exception{
+		//cripto la password
+		MessageDigest md5 = MessageDigest.getInstance("MD5");
+		md5.update(password.getBytes(),0,password.length());
+		this.password = (new BigInteger(1,md5.digest()).toString(16));
 	}
 	
 	public String getRuolo(){

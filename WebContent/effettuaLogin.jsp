@@ -7,7 +7,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="logincontroller" method="get">
+	<form action="logincontroller" method="post">
 		<p>${usernameError}</p>
 		UserName: <input type="text" name="username"
 			value='${param["username"]}' />

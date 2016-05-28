@@ -11,7 +11,7 @@ import javax.persistence.Persistence;
 
 import it.uniroma3.modelli.TipologiaEsame;
 import it.uniroma3.modelli.Prerequisito;
-import it.uniroma3.persistence.TipologiaEsameDaoJPA;
+
 
 public class ElencoEsamiOfferti {
 
