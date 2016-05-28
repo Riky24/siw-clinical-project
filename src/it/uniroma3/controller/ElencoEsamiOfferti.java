@@ -19,7 +19,7 @@ public class ElencoEsamiOfferti {
 	private Map<String, EsamiOfferti> esamiOfferti;
 	
 	ElencoEsamiOfferti() {
-		
+		 
 	}
 
 	public void inizializza() {
