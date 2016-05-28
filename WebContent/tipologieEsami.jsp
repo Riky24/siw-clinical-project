@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.uniroma3.modelli.EsamiOfferti"%>
+<%@ page import="it.uniroma3.modelli.TipologiaEsame"%>
 <%@ page import="it.uniroma3.modelli.Prerequisito"%>
 <%-- <%@  page import="javax.persistence.EntityManager"%> --%>
 <%-- <%@ page import="javax.persistence.EntityManagerFactory"%> --%>
@@ -13,15 +13,15 @@
 </head>
 <body>
 
-	<h1>Esami offerti dalla clinica</h1>
+	<h1>Tipologie di esami offerti dalla clinica</h1>
 
-	<form action="esamiofferticontroller" method="get">
+	<form action="tipologieEsamiOffertiController" method="get">
 		<input type="hidden" name="tipologiaEsame" value="vista">
 		<button type="submit" name="vista" class="btn btn-default"
 			value='${ param["vista"]}'>Esame della vista</button>
 	</form>
 
-	<form action="esamiofferticontroller" method="get">
+	<form action="tipologieEsamiOffertiController" method="get">
 		<input type="hidden" name="tipologiaEsame" value="sangue">
 		<button type="submit" name="sangue" class="btn btn-default"
 			value='${ param["sangue"]}'>Esame del sangue</button>

@@ -6,7 +6,7 @@
 		transaction-type="RESOURCE_LOCAL">
 		<class>it.uniroma3.db.products.PazienteRegistrato</class>
 		<class>it.uniroma3.db.products.Prerequisito</class>
-		<class>it.uniroma3.db.products.EsamiOfferti</class>
+		<class>it.uniroma3.db.products.TipologiaEsame</class>
 		<class>it.uniroma3.db.products.Main</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />

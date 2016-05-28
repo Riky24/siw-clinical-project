@@ -9,14 +9,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.TipologiaEsame;
 import it.uniroma3.modelli.Prerequisito;
-import it.uniroma3.persistence.EsamiOffertiDaoJPA;
+import it.uniroma3.persistence.TipologiaEsameDaoJPA;
 
 public class ElencoEsamiOfferti {
 
-	private EsamiOfferti e = new EsamiOfferti();
-	private Map<String, EsamiOfferti> esamiOfferti;
+	private TipologiaEsame e = new TipologiaEsame();
+	private Map<String, TipologiaEsame> esamiOfferti;
 	
 	ElencoEsamiOfferti() {
 		
@@ -29,7 +29,7 @@ public class ElencoEsamiOfferti {
 //		EntityManager em = emf.createEntityManager();
 		
 		
-		EsamiOfferti e1 = new EsamiOfferti();
+		TipologiaEsame e1 = new TipologiaEsame();
 		Prerequisito p11 = new Prerequisito("1 eye", "E' necessario avere almeno un occhio");
 		Prerequisito p12 = new Prerequisito("no lens", "Non si devono indossare lenti a contatto");
 		e1.setDescrizione("Esame della vista");
@@ -40,7 +40,7 @@ public class ElencoEsamiOfferti {
 		e1.addPrerequisito(p12);
 		
 		
-		EsamiOfferti e2 = new EsamiOfferti();
+		TipologiaEsame e2 = new TipologiaEsame();
 		Prerequisito p21 = new Prerequisito("no breakfast", "Non bisogna aver fatto colazione il giorno dell'esame");
 		e2.setDescrizione("Esame del sangue");
 		e2.setNome("sangue");
@@ -62,7 +62,7 @@ public class ElencoEsamiOfferti {
 //		emf.close();
 	}
 	
-	public Map<String, EsamiOfferti> getEsami() {
+	public Map<String, TipologiaEsame> getEsami() {
 		return this.esamiOfferti;
 	}
 	

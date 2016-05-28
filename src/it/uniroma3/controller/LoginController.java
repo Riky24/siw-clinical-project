@@ -17,10 +17,11 @@ import it.uniroma3.modelli.Utente;
 public class LoginController extends HttpServlet {
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 
+		VerificaLogin f = new VerificaLogin();
 
 		// leggo i parametri
 		String username = request.getParameter("username");
@@ -42,30 +43,23 @@ public class LoginController extends HttpServlet {
 			nextPage = "/effettuaLogin.jsp";
 		}
 		else{
-			Utente u;
-			try {
-				VerificaLogin f = new VerificaLogin();
-				u = f.login(username, password);
+			Utente u = f.login(username, password);
+			if(u!= null){
 
-				if(u!= null){
+				
+				HttpSession sessione = request.getSession();
+				sessione.setAttribute("utente", u);    // parametro utente accessibile da ogni classe
 
-
-					HttpSession sessione = request.getSession();
-					sessione.setAttribute("utente", u);    // parametro utente accessibile da ogni classe
-
-					String ruolo = u.getRuolo();
-					if(ruolo.equals("admin")){
-						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
-					}
-					if(ruolo.equals("user")){
-						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
-					}
-				}else{
-					request.setAttribute("loginError", "User o password errati");
-					nextPage = "/effettuaLogin.jsp";
+				String ruolo = u.getRuolo();
+				if(ruolo.equals("admin")){
+					nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				if(ruolo.equals("user")){
+					nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+				}
+			}else{
+				request.setAttribute("loginError", "User o password errati");
+				nextPage = "/effettuaLogin.jsp";
 			}
 		}
 

@@ -7,21 +7,21 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.TipologiaEsame;
 
 
 
-public class EsamiOffertiDaoJPA implements EsamiOffertiDao {
+public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
 	private EntityManager em;
 	private EntityTransaction tx;
 
-	public EsamiOffertiDaoJPA(EntityManager em) {
+	public TipologiaEsameDaoJPA(EntityManager em) {
 		this.em=em;
 	}
 //INIZIO A FARE LE VARIE RICHIESTE DI:
 	@Override
-	public void save(EsamiOfferti esamiOfferti) {//SALVATAGGIO
+	public void save(TipologiaEsame esamiOfferti) {//SALVATAGGIO
 		tx = em.getTransaction();
 		tx.begin();
 		em.persist(esamiOfferti);
@@ -29,18 +29,18 @@ public class EsamiOffertiDaoJPA implements EsamiOffertiDao {
 	}
 //pongo id come chiave primaria
 	@Override
-	public EsamiOfferti findByPrimaryKey(Long id) {
-		return em.find(EsamiOfferti.class, id);
+	public TipologiaEsame findByPrimaryKey(Long id) {
+		return em.find(TipologiaEsame.class, id);
 	}
 //faccio una query per la lista degli ordini
 	@Override
-	public List<EsamiOfferti> findAll() {
-		List<EsamiOfferti> esamiOfferti = em.createQuery("SELECT o FROM esamiofferti o").getResultList();
+	public List<TipologiaEsame> findAll() {
+		List<TipologiaEsame> esamiOfferti = em.createQuery("SELECT o FROM esamiofferti o").getResultList();
 		return esamiOfferti;
 	}
 
 	@Override
-	public void update(EsamiOfferti esamiOfferti) {//AGGIORNAMENTO
+	public void update(TipologiaEsame esamiOfferti) {//AGGIORNAMENTO
 		tx = em.getTransaction();
 		tx.begin();
 		em.merge(esamiOfferti);
@@ -48,7 +48,7 @@ public class EsamiOffertiDaoJPA implements EsamiOffertiDao {
 	}
 
 	@Override
-	public void delete(EsamiOfferti esamiOfferti) {//ELIMINAZIONE
+	public void delete(TipologiaEsame esamiOfferti) {//ELIMINAZIONE
 		tx = this.em.getTransaction();
 		tx.begin();
 		em.remove(esamiOfferti);

@@ -15,9 +15,9 @@
 <!-- 	come faccio a rappresentare i requisiti? -->
 	<p>Requisiti: ${tipologiaEsame.prerequisiti};</p>
 
+
 	<form action=tipologieEsami.jsp>
 		<input type="submit" value="back">
 	</form>
-
 </body>
 </html>

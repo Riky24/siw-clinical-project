@@ -1,8 +1,9 @@
 package it.uniroma3.modelli;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,15 +13,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
 
 @Entity
-public class EsamiOfferti {
+public class TipologiaEsame {
 	
-	public EsamiOfferti(){
-		this.prerequisiti = new ArrayList<>();
+	public TipologiaEsame(){
+		this.prerequisiti = new HashMap<>();
 	}
 	
 	@Id
@@ -39,11 +41,14 @@ public class EsamiOfferti {
 	@Column(nullable = false)
 	private String costo;
 	
+//	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+//	@JoinColumn(name = "prerequisiti_id")
+//	private List<Prerequisito> prerequisiti;
 	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "prerequisiti_id")
-	private List<Prerequisito> prerequisiti;
-
+	private Map<String,Prerequisito> prerequisiti;
+	
 	public Long getId() {
 		return id;
 	}
@@ -74,14 +79,14 @@ public class EsamiOfferti {
 
 	public void addPrerequisito(Prerequisito p){
 		if (p != null)
-		this.prerequisiti.add(p);
+		this.prerequisiti.put(p.getChiave(), p);
 	}
 	
-	public List<Prerequisito> getPrerequisiti() {
+	public Map<String, Prerequisito> getPrerequisiti() {
 		return prerequisiti;
 	}
 
-	public void setPrerequisiti(List<Prerequisito> prerequisiti) {
+	public void setPrerequisiti(Map<String, Prerequisito> prerequisiti) {
 		this.prerequisiti = prerequisiti;
 	}
 

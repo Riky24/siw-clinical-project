@@ -13,12 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.modelli.EsamiOfferti;
+import it.uniroma3.modelli.TipologiaEsame;
 import it.uniroma3.modelli.Prerequisito;
 
 
-@WebServlet("/esamiofferticontroller")
-public class EsamiOffertiController extends HttpServlet  {
+@WebServlet("/tipologieEsamiOffertiController")
+public class TipologieEsamiOffertiController extends HttpServlet  {
 
 
 //	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,8 +38,8 @@ public class EsamiOffertiController extends HttpServlet  {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//non riesco ad interagire con il database perchè mi causa errore 500
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
-		EntityManager em = emf.createEntityManager();
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("clinica-unit");
+//		EntityManager em = emf.createEntityManager();
 		
 		String nextPage = null;
 		
@@ -47,7 +47,7 @@ public class EsamiOffertiController extends HttpServlet  {
 		eeo.inizializza();
 		
 		String serv = request.getParameter("tipologiaEsame");
-		EsamiOfferti e = null;
+		TipologiaEsame e = null;
 		switch(serv){
 		case "vista":
 			e = eeo.getEsami().get("vi");
@@ -59,7 +59,7 @@ public class EsamiOffertiController extends HttpServlet  {
 		
 		request.setAttribute("tipologiaEsame", e);
 
-		nextPage = "/esameSelezionato.jsp";
+		nextPage = "/tipologiaEsameSelezionato.jsp";
 		
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextPage);
