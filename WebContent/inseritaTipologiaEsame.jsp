@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<h1>Dati inseriti della tipologia di esame </h1>
+	<h1>Dati inseriti della tipologia di esame</h1>
 	<ul>
 		<li>Codice: <b>${tipologiaEsame.codice}</b></li>
 		<!-- accedo alla chiave etichettata (nella sessione) come "studente" e invoco su quell'oggetto il metodo getMatricola() -->
@@ -17,8 +17,10 @@
 		<!-- qui non ho cambiato nulla passando da request a sessione poichè automaticamente cerca i dati in entrambi -->
 		<li>Costo: <b>${tipologiaEsame.costo}</b></li>
 		<li>Descrizione: <b>${tipologiaEsame.descrizione}</b></li>
+	</ul>
 
-		<form action=inserisciTipologiaEsame.jsp>
-			<input type="submit" value="indietro">
-		</form></body>
+	<form action=inserisciTipologiaEsame.jsp>
+		<input type="submit" value="indietro">
+	</form>
+</body>
 </html>

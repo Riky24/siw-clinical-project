@@ -9,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import it.uniroma3.modelli.Prerequisito;
+import it.uniroma3.modelli.TipologiaEsame;
 
 @WebServlet("/inserisciTipologiaEsameController")
 public class InserisciTipologiaEsameController extends HttpServlet  {
@@ -32,13 +36,40 @@ public class InserisciTipologiaEsameController extends HttpServlet  {
 		
 		String nextpage = "/inserisciTipologiaEsame.jsp";
 		
-		InserisciTipologiaEsameAction ac = new InserisciTipologiaEsameAction();
-		InserisciTipologiaEsameHelper hp = new InserisciTipologiaEsameHelper();
+		TipologiaEsame tipologiaEsame = new TipologiaEsame();
+		
+		InserisciTipologiaEsameAction iteAction = new InserisciTipologiaEsameAction();
+		InserisciTipologiaEsameHelper iteHelper = new InserisciTipologiaEsameHelper();
+		
+		//determina quale bottone è stato premuto
+		String bt = request.getParameter("bt");
 		
 		
-		if(hp.validate(request,response)) {
-			nextpage = ac.execute(request);
+		
+		//salva l'oggetto 'tipologiaEsame' nel database
+		if(bt.equals("salva")) {
+			if(iteHelper.validate(request,response)) {
+				nextpage = iteAction.execute(request, tipologiaEsame);
+			}
 		}
+		
+		//lega la 'tipologiaEsame' con l'oggetto 'prerequisito' per poi salvarlo nella sessione
+		if(bt.equals("inserisciAltriPrerequisiti")) {
+			if(iteHelper.validate(request,response)) {
+				tipologiaEsame.setCodice(request.getParameter("codice"));
+				tipologiaEsame.setNome(request.getParameter("nome"));
+				tipologiaEsame.setCosto(request.getParameter("costo"));
+				tipologiaEsame.setDescrizione(request.getParameter("descrizione"));
+				Prerequisito prerequisito = 
+						new Prerequisito(request.getParameter("chiavePrerequisito"), request.getParameter("valorePrerequisito"));
+				tipologiaEsame.addPrerequisito(prerequisito);
+				nextpage = "/inserisciAltroPrerequisito.jsp";
+			}
+		}
+		
+		//salva l'oggetto 'tipologiaEsame' nella sessione
+		HttpSession s = request.getSession();
+		s.setAttribute("tip", tipologiaEsame);
 		
 		// inoltro la richiesta alla pagina jsp dedicata
 		nextpage = response.encodeURL(nextpage);

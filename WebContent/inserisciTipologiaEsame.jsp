@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+
+<%@ page import="it.uniroma3.modelli.*"%>
+
+<%
+	TipologiaEsame tipologiaEsame = (TipologiaEsame) session.getAttribute("tip");
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,10 +16,10 @@
 <body>
 
 	<div>
-		<h2>Inserimento di una nuova tipologia di esame</h2>
+		<h2>Inserisci una nuova tipologia di esame</h2>
 		<div>
 			<div class="form_container">
-			
+
 				<form action="inserisciTipologiaEsameController" method="post">
 
 					<div class="form-group">
@@ -53,8 +60,8 @@
 						<p>${chiaveError}</p>
 
 						<label>Chiave Prerequisito</label> <input type="text"
-							class="form-control" placeholder="Chiave Prerequisito" name="chiavePrerequisito"
-							value='${param["chiavePrerequisito"]}' />
+							class="form-control" placeholder="Chiave Prerequisito"
+							name="chiavePrerequisito" value='${param["chiavePrerequisito"]}' />
 					</div>
 
 					<div class="form-group">
@@ -62,16 +69,21 @@
 						<p>${valoreError}</p>
 
 						<label>Valore Prerequisito</label> <input type="text"
-							class="form-control" placeholder="Valore Prerequisito" name="valorePrerequisito"
-							value='${param["valorePrerequisito"]}' />
+							class="form-control" placeholder="Valore Prerequisito"
+							name="valorePrerequisito" value='${param["valorePrerequisito"]}' />
 					</div>
 
-					<button type="submit" class="btn btn-default">Invia</button>
-					
+					<button type="submit" name="bt" value="salva">Salva</button>
+					<button type="submit" name="bt" value="inserisciAltriPrerequisiti">Aggiungi
+						un altro prerequisito</button>
+
 				</form>
-				
-				
-				
+
+				<!-- 				<form action=inserisciAltroPrerequisito.jsp> -->
+				<!-- 					<input type="submit" value="Inserisci altri prerequisiti"> -->
+				<!-- 				</form> -->
+
+
 			</div>
 		</div>
 	</div>
