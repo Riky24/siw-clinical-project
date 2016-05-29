@@ -15,6 +15,14 @@ import it.uniroma3.modelli.Utente;
 
 @WebServlet("/logincontroller")
 public class LoginController extends HttpServlet {
+	
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		ServletContext contesto = request.getServletContext();
+		RequestDispatcher dispatcher = contesto.getRequestDispatcher("/effettuaLogin.jsp");
+		dispatcher.forward(request, response);
+	}
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -55,10 +63,10 @@ public class LoginController extends HttpServlet {
 
 					String ruolo = u.getRuolo();
 					if(ruolo.equals("admin")){
-						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+						nextPage = "/utente/provaLogin.jsp";
 					}
 					if(ruolo.equals("user")){
-						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
+						nextPage = "/utente/provaLogin.jsp";
 					}
 				}else{
 					request.setAttribute("loginError", "User o password errati");

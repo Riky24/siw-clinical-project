@@ -13,11 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import it.uniroma3.modelli.Utente;
 
-@WebServlet("/logoutcontroller")
+@WebServlet("/utente/logoutcontroller")
 public class LogoutController extends HttpServlet {
 
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession sessione = request.getSession();
 		Utente u  = (Utente) sessione.getAttribute("utente");
 		if(u!=null){

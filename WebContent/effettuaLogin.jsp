@@ -13,7 +13,7 @@
 			value='${param["username"]}' />
 
 		<p>${passwordError}</p>
-		Password: <input type="text" name="password"
+		Password: <input type="password" name="password"
 			value='${param["password"]}' />
 
 		<p>${loginError}</p>
