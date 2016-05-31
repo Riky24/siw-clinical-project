@@ -63,10 +63,10 @@ public class LoginController extends HttpServlet {
 
 					String ruolo = u.getRuolo();
 					if(ruolo.equals("admin")){
-						nextPage = "/utente/provaLogin.jsp";
+						nextPage = "/provaLogin.jsp";
 					}
 					if(ruolo.equals("user")){
-						nextPage = "/utente/provaLogin.jsp";
+						nextPage = "/provaLogin.jsp";
 					}
 				}else{
 					request.setAttribute("loginError", "User o password errati");

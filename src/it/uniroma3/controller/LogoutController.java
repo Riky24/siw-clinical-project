@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import it.uniroma3.modelli.Utente;
 
-@WebServlet("/utente/logoutcontroller")
+@WebServlet("/logoutcontroller")
 public class LogoutController extends HttpServlet {
 
 
