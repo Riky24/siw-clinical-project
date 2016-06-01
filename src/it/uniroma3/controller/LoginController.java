@@ -69,7 +69,7 @@ public class LoginController extends HttpServlet {
 						nextPage = "/provaLogin.jsp";
 					}
 				}else{
-					request.setAttribute("loginError", "User o password errati");
+					request.setAttribute("loginError", "Effettua il login");
 					nextPage = "/effettuaLogin.jsp";
 				}
 			} catch (Exception e) {

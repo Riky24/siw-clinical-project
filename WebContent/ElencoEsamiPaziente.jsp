@@ -1,5 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ page import="it.uniroma3.modelli.Utente" %>
+	<% Utente utente = (Utente)session.getAttribute("utente");
+       if(utente==null || utente.getRuolo().equals("admin")) {
+    	   if (utente.getRuolo().equals("admin")) {
+   			request.setAttribute("loginError", "Effettua il login come paziente");
+   		} else
+   			request.setAttribute("loginError", "Effettua il login");
+   		out.clear();
+   		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
+          rd.forward(request, response);
+          return;
+       }
+    %>
 <!DOCTYPE html>
 <html lang="it">
 <head>
