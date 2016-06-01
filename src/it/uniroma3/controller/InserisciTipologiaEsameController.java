@@ -13,15 +13,15 @@ import javax.servlet.http.HttpSession;
 
 import it.uniroma3.modelli.Prerequisito;
 import it.uniroma3.modelli.TipologiaEsame;
+import it.uniroma3.modelli.Utente;
 
 @WebServlet("/inserisciTipologiaEsameController")
 public class InserisciTipologiaEsameController extends HttpServlet  {
 
-    public InserisciTipologiaEsameController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-	
+	public InserisciTipologiaEsameController() {
+		super();
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -32,53 +32,66 @@ public class InserisciTipologiaEsameController extends HttpServlet  {
 		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
 		rd.forward(request, response);
 	}
-    
+
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String nextpage = "/inserisciTipologiaEsame.jsp";
-		
-		TipologiaEsame tipologiaEsame = new TipologiaEsame();
-		
-		InserisciTipologiaEsameAction iteAction = new InserisciTipologiaEsameAction();
-		InserisciTipologiaEsameHelper iteHelper = new InserisciTipologiaEsameHelper();
-		
-		//determina quale bottone è stato premuto
-		String bt = request.getParameter("bt");
-		
-		
-		
-		//salva l'oggetto 'tipologiaEsame' nel database
-		if(bt.equals("salva")) {
-			if(iteHelper.validate(request,response)) {
-				nextpage = iteAction.execute(request, tipologiaEsame);
-			}
-		}
-		
-		//lega la 'tipologiaEsame' con l'oggetto 'prerequisito' per poi salvarlo nella sessione
-		if(bt.equals("inserisciAltriPrerequisiti")) {
-			if(iteHelper.validate(request,response)) {
-				tipologiaEsame.setCodice(request.getParameter("codice"));
-				tipologiaEsame.setNome(request.getParameter("nome"));
-				tipologiaEsame.setCosto(request.getParameter("costo"));
-				tipologiaEsame.setDescrizione(request.getParameter("descrizione"));
-				Prerequisito prerequisito = 
-						new Prerequisito(request.getParameter("chiavePrerequisito"), request.getParameter("valorePrerequisito"));
-				tipologiaEsame.addPrerequisito(prerequisito);
-				nextpage = "/inserisciAltroPrerequisito.jsp";
-			}
-		}
-		
-		//salva l'oggetto 'tipologiaEsame' nella sessione
+
+
 		HttpSession s = request.getSession();
-		s.setAttribute("tip", tipologiaEsame);
-		
-		// inoltro la richiesta alla pagina jsp dedicata
-		nextpage = response.encodeURL(nextpage);
+		String nextpage;
+
+		Utente utente = (Utente)s.getAttribute("utente");
+		if(utente==null || utente.getRuolo().equals("user")){
+			if (utente.getRuolo().equals("user")) {
+				request.setAttribute("loginError", "Effettua il login come amministratore");
+			} else
+				request.setAttribute("loginError", "Effettua il login");
+			nextpage = "/effettuaLogin.jsp";
+		}else{
+
+			nextpage = "/inserisciTipologiaEsame.jsp";
+
+			TipologiaEsame tipologiaEsame = new TipologiaEsame();
+
+			InserisciTipologiaEsameAction iteAction = new InserisciTipologiaEsameAction();
+			InserisciTipologiaEsameHelper iteHelper = new InserisciTipologiaEsameHelper();
+
+			//determina quale bottone è stato premuto
+			String bt = request.getParameter("bt");
+
+
+
+			//salva l'oggetto 'tipologiaEsame' nel database
+			if(bt.equals("salva")) {
+				if(iteHelper.validate(request,response)) {
+					nextpage = iteAction.execute(request, tipologiaEsame);
+				}
+			}
+
+			//lega la 'tipologiaEsame' con l'oggetto 'prerequisito' per poi salvarlo nella sessione
+			if(bt.equals("inserisciAltriPrerequisiti")) {
+				if(iteHelper.validate(request,response)) {
+					tipologiaEsame.setCodice(request.getParameter("codice"));
+					tipologiaEsame.setNome(request.getParameter("nome"));
+					tipologiaEsame.setCosto(request.getParameter("costo"));
+					tipologiaEsame.setDescrizione(request.getParameter("descrizione"));
+					Prerequisito prerequisito = 
+							new Prerequisito(request.getParameter("chiavePrerequisito"), request.getParameter("valorePrerequisito"));
+					tipologiaEsame.addPrerequisito(prerequisito);
+					nextpage = "/inserisciAltroPrerequisito.jsp";
+				}
+			}
+
+			//salva l'oggetto 'tipologiaEsame' nella sessione
+			s.setAttribute("tip", tipologiaEsame);
+
+			// inoltro la richiesta alla pagina jsp dedicata
+			nextpage = response.encodeURL(nextpage);
+		}
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextpage);
 		rd.forward(request, response);
-		
+
 	}
 }
