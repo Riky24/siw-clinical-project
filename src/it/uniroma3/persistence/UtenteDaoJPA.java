@@ -29,10 +29,16 @@ public class UtenteDaoJPA implements UtenteDao {
 	public Utente findByPrimaryKey(Long id) {
 		return em.find(Utente.class, id);
 	}
-//faccio una query per la lista degli ordini
+	
+	
+	
+//faccio una query per la lista degli utenti
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Utente> findAll() {
-		List<Utente> utente = em.createQuery("SELECT o FROM pazienteregistrato o").getResultList();
+//		List<Utente> utente = em.createQuery("SELECT o FROM utente o").getResultList();
+		List<Utente> utente = em.createNamedQuery("Utente.findAll").getResultList();
+//		em.clear();
 		return utente;
 	}
 

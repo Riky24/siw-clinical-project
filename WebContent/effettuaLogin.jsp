@@ -21,7 +21,10 @@
 		<button type="submit" name="login" class="btn btn-default"
 			value="login">Login</button>
 	</form>
+		<form action=paginaIniziale.jsp>
+		<input type="submit" value="indietro">
+	</form>
 	<p>Amministratore: user - mario, password - rossi</p>
-	<p>Utente Registrato: user - rossi, password - mario</p>
+	<p>Utente Registrato: user - stefano, password - bianchi</p>
 </body>
 </html>

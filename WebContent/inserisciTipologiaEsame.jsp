@@ -2,19 +2,27 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ page import="it.uniroma3.modelli.*"%>
-<%@ page import="it.uniroma3.modelli.Utente" %>
-	<% Utente utente = (Utente)session.getAttribute("utente");
-       if(utente==null || utente.getRuolo().equals("user")) {
-    	   if (utente.getRuolo().equals("user")) {
-   			request.setAttribute("loginError", "Effettua il login come amministratore");
-   		} else
-   			request.setAttribute("loginError", "Effettua il login");
-   		out.clear();
-   		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
-          rd.forward(request, response);
-          return;
-       }
-    %>
+
+<%
+	Utente utente = (Utente) session.getAttribute("utente");
+	//        if(utente==null) {
+	//    		request.setAttribute("loginError", "Devi effettuare il login");
+	//    		out.clear();
+	//    		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
+	//           rd.forward(request, response);
+	//           return;
+	//        }
+	if (utente == null || utente.getRuolo().equals("user")) {
+		if (utente.getRuolo().equals("user")) {
+			request.setAttribute("loginError", "Devi effettuare il login come amministratore");
+		} else
+			request.setAttribute("loginError", "Devi effettuare il login");
+		out.clear();
+		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
+		rd.forward(request, response);
+		return;
+	}
+%>
 
 <%
 	TipologiaEsame tipologiaEsame = (TipologiaEsame) session.getAttribute("tip");
@@ -92,10 +100,10 @@
 
 				</form>
 
-				<!-- 				<form action=inserisciAltroPrerequisito.jsp> -->
-				<!-- 					<input type="submit" value="Inserisci altri prerequisiti"> -->
-				<!-- 				</form> -->
-
+<form action="/siw-clinical-project/logoutcontroller" method="post">
+		<button type="submit" name="logout" class="btn btn-default"
+			value="logout">Logout</button>
+	</form>
 
 			</div>
 		</div>

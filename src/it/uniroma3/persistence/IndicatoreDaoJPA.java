@@ -7,52 +7,54 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
-import it.uniroma3.modelli.TipologiaEsame;
+import it.uniroma3.modelli.Indicatore;
 
 
 
-public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
+public class IndicatoreDaoJPA implements IndicatoreDao {
 	//STABILISCO LA CONNESSIONE CON IL DATABASE
 	private EntityManager em;
 	private EntityTransaction tx;
 
-	public TipologiaEsameDaoJPA(EntityManager em) {
+	public IndicatoreDaoJPA(EntityManager em) {
 		this.em=em;
 	}
 //INIZIO A FARE LE VARIE RICHIESTE DI:
 	@Override
-	public void save(TipologiaEsame esamiOfferti) {//SALVATAGGIO
+	public void save(Indicatore indicatore) {//SALVATAGGIO
 		tx = em.getTransaction();
 		tx.begin();
-		em.persist(esamiOfferti);
+		em.persist(indicatore);
 		tx.commit();
 	}
 //pongo id come chiave primaria
 	@Override
-	public TipologiaEsame findByPrimaryKey(Long id) {
-		return em.find(TipologiaEsame.class, id);
+	public Indicatore findByPrimaryKey(Long id) {
+		return em.find(Indicatore.class, id);
 	}
 	
 //faccio una query per la lista degli tipologie esame
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<TipologiaEsame> findAll() {
-		List<TipologiaEsame> esamiOfferti = em.createQuery("SELECT o FROM tipologiaesame o").getResultList();
-		return esamiOfferti;
+	public List<Indicatore> findAll() {
+		List<Indicatore> indicatore = em.createQuery("RisultatoEsame.findAll").getResultList();
+		return indicatore;
 	}
 
 	@Override
-	public void update(TipologiaEsame esamiOfferti) {//AGGIORNAMENTO
+	public void update(Indicatore indicatore) {//AGGIORNAMENTO
 		tx = em.getTransaction();
 		tx.begin();
-		em.merge(esamiOfferti);
+		em.merge(indicatore);
 		tx.commit();
 	}
 
 	@Override
-	public void delete(TipologiaEsame esamiOfferti) {//ELIMINAZIONE
+	public void delete(Indicatore esamiOfferti) {//ELIMINAZIONE
 		tx = this.em.getTransaction();
 		tx.begin();
 		em.remove(esamiOfferti);
 		tx.commit();
 	}
 }
+

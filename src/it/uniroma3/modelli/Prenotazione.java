@@ -18,11 +18,9 @@ public class Prenotazione {
 	private Long id;
 	
 	@OneToOne
-	@Column(nullable=false)
 	private Utente utente;
 	
 	@OneToOne
-	@Column(nullable=false)
 	private TipologiaEsame tipologiaEsame;
 	
 	@Column(nullable=false)

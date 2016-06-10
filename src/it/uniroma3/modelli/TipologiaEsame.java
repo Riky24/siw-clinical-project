@@ -41,12 +41,8 @@ public class TipologiaEsame {
 	@Column(nullable = false)
 	private String costo;
 	
-//	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REMOVE, CascadeType.PERSIST })
-//	@JoinColumn(name = "prerequisiti_id")
-//	private List<Prerequisito> prerequisiti;
-	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "prerequisiti_id")
+	@JoinColumn(name = "tipologiaesame_id")
 	private Map<String,Prerequisito> prerequisiti;
 	
 	public Long getId() {

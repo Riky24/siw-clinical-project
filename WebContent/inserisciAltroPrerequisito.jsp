@@ -2,18 +2,18 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ page import="it.uniroma3.modelli.*"%>
-<%@ page import="it.uniroma3.modelli.Utente" %>
-	<% Utente utente = (Utente)session.getAttribute("utente");
-       if(utente==null || utente.getRuolo().equals("user")) {
-    	   if (utente.getRuolo().equals("user")) {
-   			request.setAttribute("loginError", "Effettua il login come amministratore");
-   		} else
-   			request.setAttribute("loginError", "Effettua il login");
-   		out.clear();
-   		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
-          rd.forward(request, response);
-          return;
-       }
+
+        <% Utente utente = (Utente)session.getAttribute("utente");
+    	if (utente == null || utente.getRuolo().equals("user")) {
+    		if (utente.getRuolo().equals("user")) {
+    			request.setAttribute("loginError", "Devi effettuare il login come amministratore");
+    		} else
+    			request.setAttribute("loginError", "Devi effettuare il login");
+    		out.clear();
+    		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
+    		rd.forward(request, response);
+    		return;
+    	}
     %>
 
 <%
@@ -41,7 +41,7 @@
 
 				<label>Chiave Prerequisito</label> <input type="text"
 					class="form-control" placeholder="Chiave Prerequisito"
-					name="chiavePrerequisito" value='${param["chiavePrerequisito"]}' />
+					name="chiavePrerequisito" value='${param["chiavePrerequisit"]}' />
 			</div>
 
 			<div class="form-group">
@@ -50,8 +50,10 @@
 
 				<label>Valore Prerequisito</label> <input type="text"
 					class="form-control" placeholder="Valore Prerequisito"
-					name="valorePrerequisito" value='${param["valorePrerequisito"]}' />
+					name="valorePrerequisito" value='${param["valorePrerequisit"]}' />
 			</div>
+
+<p>${prerequisitoAggiunto}</p>
 
 			<button type="submit" name="bt" value="salva">Salva</button>
 			<button type="submit" name="bt" value="inserisciAltroPrerequisito">Aggiungi
