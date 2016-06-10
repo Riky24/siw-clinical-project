@@ -12,6 +12,10 @@ public class PaginaInizialeAction {
 	
 	public void inizializzaDatabase() throws Exception {
 		
+		Facade facade = new Facade();
+		facade.istanziaEntityManager();
+
+			
 		TipologiaEsame e1 = new TipologiaEsame();
 		Prerequisito p11 = new Prerequisito("1 eye", "E' necessario avere almeno un occhio");
 		Prerequisito p12 = new Prerequisito("no lens", "Non si devono indossare lenti a contatto");
@@ -45,15 +49,17 @@ public class PaginaInizialeAction {
 		s.setUsername("stefano");
 		s.setPassword("bianchi");
 		s.setRuolo("user");
+	
 		
-		
-		
-		Facade facade = new Facade();
-		facade.istanziaEntityManager();
+		long i = 6;
+		if(facade.getUtenteByID(i)==null)
+		{	
 		facade.inserisciTipologia(e1);
 		facade.inserisciTipologia(e2);
 		facade.inserisciUtente(m);
 		facade.inserisciUtente(s);
+		}
+		
 		facade.closeEm();
 	}
 	

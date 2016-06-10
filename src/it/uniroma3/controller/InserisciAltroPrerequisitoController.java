@@ -78,6 +78,7 @@ public class InserisciAltroPrerequisitoController extends HttpServlet {
 				Prerequisito prerequisito = 
 						new Prerequisito(request.getParameter("chiavePrerequisito"), request.getParameter("valorePrerequisito"));
 				tipologiaEsame.addPrerequisito(prerequisito);
+				request.setAttribute("prerequisitoAggiunto", "Il prerequisito è stato aggiunto");
 			}
 		}
 		

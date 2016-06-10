@@ -87,7 +87,7 @@ public class Facade {
 	}
 	
     //restituisci tutti gli utenti attualmente istanziati nel database
-	public Utente getUtentiByID(Long id) {
+	public Utente getUtenteByID(Long id) {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
 		Utente utente = utenteDao.findByPrimaryKey(id);
 		return utente;
