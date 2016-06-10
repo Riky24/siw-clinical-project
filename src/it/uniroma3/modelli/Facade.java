@@ -3,6 +3,7 @@ package it.uniroma3.modelli;
 
 
 import java.util.Date;
+import java.util.List;
 
 //import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -11,6 +12,7 @@ import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
 import it.uniroma3.persistence.TipologiaEsameDaoJPA;
+import it.uniroma3.persistence.UtenteDaoJPA;
 
 
 public class Facade {
@@ -29,6 +31,7 @@ public class Facade {
 	
 	public Facade() {}
 
+	//istanzia l'entity manager
 	public void istanziaEntityManager() {
 		try {
 			em = this.getInstance().getEntityManagerFactory().createEntityManager();
@@ -68,6 +71,47 @@ public class Facade {
 	public void inserisciTipologia(TipologiaEsame e) {
 		TipologiaEsameDaoJPA esamiOffertiDao = new TipologiaEsameDaoJPA(em);
 		esamiOffertiDao.save(e);
+	}
+	
+    //inserimento di un utente
+	public void inserisciUtente(Utente e) {
+		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
+		utenteDao.save(e);
+	}
+	
+    //restituisci tutti gli utenti attualmente istanziati nel database
+	public List<Utente> getAllUtenti() {
+		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
+		List<Utente> utenti = utenteDao.findAll();
+		return utenti;
+	}
+	
+    //restituisci tutti gli utenti attualmente istanziati nel database
+	public Utente getUtentiByID(Long id) {
+		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
+		Utente utente = utenteDao.findByPrimaryKey(id);
+		return utente;
+	}
+	
+	
+	public void closeEm() {
 		em.close();
+	}
+	
+	//verifica il login
+	public Utente login(String username, String password) throws Exception {
+		Utente u = new Utente();
+		u.setCodiceFiscale("marRos");
+		u.setNome("Mario");
+		u.setCognome("Rossi");
+		u.setUsername("mario");
+		u.setPassword("rossi");
+		u.setRuolo("AdmiN");
+		if(username.equals("mario") && password.equals("rossi")) {
+			return u;
+		}
+		else
+			return null;
+		
 	}
 }

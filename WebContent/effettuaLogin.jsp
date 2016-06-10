@@ -22,6 +22,6 @@
 			value="login">Login</button>
 	</form>
 	<p>Amministratore: user - mario, password - rossi</p>
-	<p>Utente Registrato: user - rossi, password - mario</p>
+	<p>Utente Registrato: user - stefano, password - bianchi</p>
 </body>
 </html>

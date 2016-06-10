@@ -17,7 +17,7 @@ public class InserisciAltroPrerequisitoAction {
 		Facade facade = new Facade();
 		facade.istanziaEntityManager();
 		facade.inserisciTipologia(tipologiaEsame);
-		
+		facade.closeEm();
 		
 		request.setAttribute("tipologiaEsame", tipologiaEsame);
 		

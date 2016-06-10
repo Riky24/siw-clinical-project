@@ -25,6 +25,7 @@ public class InserisciTipologiaEsameAction {
 		Facade facade = new Facade();
 		facade.istanziaEntityManager();
 		facade.inserisciTipologia(tipologiaEsame);
+		facade.closeEm();
 		
 		
 		request.setAttribute("tipologiaEsame", tipologiaEsame);

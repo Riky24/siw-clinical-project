@@ -2,13 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 
 <%@ page import="it.uniroma3.modelli.*"%>
-<%@ page import="it.uniroma3.modelli.Utente" %>
-	<% Utente utente = (Utente)session.getAttribute("utente");
-       if(utente==null || utente.getRuolo().equals("user")) {
-    	   if (utente.getRuolo().equals("user")) {
-   			request.setAttribute("loginError", "Effettua il login come amministratore");
-   		} else
-   			request.setAttribute("loginError", "Effettua il login");
+
+        <% Utente utente = (Utente)session.getAttribute("utente");
+       if(utente==null) {
+   		request.setAttribute("loginError", "Devi effettuare il login");
    		out.clear();
    		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
           rd.forward(request, response);

@@ -32,10 +32,11 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	public TipologiaEsame findByPrimaryKey(Long id) {
 		return em.find(TipologiaEsame.class, id);
 	}
-//faccio una query per la lista degli ordini
+	
+//faccio una query per la lista degli tipologie esame
 	@Override
 	public List<TipologiaEsame> findAll() {
-		List<TipologiaEsame> esamiOfferti = em.createQuery("SELECT o FROM esamiofferti o").getResultList();
+		List<TipologiaEsame> esamiOfferti = em.createQuery("SELECT o FROM tipologiaesame o").getResultList();
 		return esamiOfferti;
 	}
 
