@@ -2,18 +2,19 @@
     pageEncoding="ISO-8859-1"%>
     <%@ page import="it.uniroma3.modelli.*"%>
     
-            <% Utente utente = (Utente)session.getAttribute("utente");
+            <%
+                	Utente utente = (Utente)session.getAttribute("utente");
         	if (utente == null || utente.getRuolo().equals("user")) {
-        		if (utente.getRuolo().equals("user")) {
-        			request.setAttribute("loginError", "Devi effettuare il login come amministratore");
-        		} else
+        		if (utente == null) {
         			request.setAttribute("loginError", "Devi effettuare il login");
+        		} else
+        			request.setAttribute("loginError", "Devi effettuare il login come amministratore");
         		out.clear();
         		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
         		rd.forward(request, response);
         		return;
         	}
-    %>
+                %>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -34,7 +35,7 @@
 	</ul>
 
 	<form action=inserisciTipologiaEsame.jsp>
-		<input type="submit" value="indietro">
+		<input type="submit" value="Indietro">
 	</form>
 </body>
 </html>

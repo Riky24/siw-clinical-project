@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
+import it.uniroma3.persistence.RisultatoEsameDaoJPA;
 import it.uniroma3.persistence.TipologiaEsameDaoJPA;
 import it.uniroma3.persistence.UtenteDaoJPA;
 
@@ -69,8 +70,14 @@ public class Facade {
     
     //inserimento di una nuova tipologia di esame
 	public void inserisciTipologia(TipologiaEsame e) {
-		TipologiaEsameDaoJPA esamiOffertiDao = new TipologiaEsameDaoJPA(em);
-		esamiOffertiDao.save(e);
+		TipologiaEsameDaoJPA tipologiaEsame = new TipologiaEsameDaoJPA(em);
+		tipologiaEsame.save(e);
+	}
+	
+    //inserimento di una nuova tipologia di esame
+	public void inserisciRisultato(RisultatoEsame e) {
+		RisultatoEsameDaoJPA risultatoEsame = new RisultatoEsameDaoJPA(em);
+		risultatoEsame.save(e);
 	}
 	
     //inserimento di un utente
@@ -87,11 +94,24 @@ public class Facade {
 	}
 	
     //restituisci tutti gli utenti attualmente istanziati nel database
+	public List<RisultatoEsame> getAllRisultatoEsame() {
+		RisultatoEsameDaoJPA risultatoEsameDao = new RisultatoEsameDaoJPA(em);
+		List<RisultatoEsame> risultatiEsami = risultatoEsameDao.findAll();
+		return risultatiEsami;
+	}
+	
+    //restituisci tutti gli utenti attualmente istanziati nel database
 	public Utente getUtenteByID(Long id) {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
 		Utente utente = utenteDao.findByPrimaryKey(id);
 		return utente;
 	}
+	
+	//restituisci i risultati del paziente il cui id è passato come parametro
+//	public List<RisultatoEsame> trovaEsamiPaziente(Long id) {
+//		RisultatoEsameDaoJPA risultatoEsame = new RisultatoEsameDaoJPA(em);
+//		return risultatoEsame.findByPatient(id);
+//	}
 	
 	
 	public void closeEm() {

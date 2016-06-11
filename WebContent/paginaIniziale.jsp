@@ -8,7 +8,7 @@
 </head>
 <body>
 
-	<h2>Effettua il login</h2>
+	<h2>BENVENUTO NELLA CLINICA R.S.L.</h2>
 
 	<form action="paginaInizialeController" method=post>
 		<button type="submit" name="bt" value="Effettua login">Effettua

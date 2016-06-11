@@ -72,5 +72,10 @@ public class RisultatoEsame {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public void addIndicatore(Indicatore p){
+		if (p != null)
+		this.indicatori.add(p);
+	}
 
 }

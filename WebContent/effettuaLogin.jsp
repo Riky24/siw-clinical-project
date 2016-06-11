@@ -25,6 +25,6 @@
 		<input type="submit" value="indietro">
 	</form>
 	<p>Amministratore: user - mario, password - rossi</p>
-	<p>Utente Registrato: user - stefano, password - bianchi</p>
+	<p>Paziente Registrato: user - stefano, password - bianchi</p>
 </body>
 </html>

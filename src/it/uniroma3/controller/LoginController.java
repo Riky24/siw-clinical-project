@@ -45,19 +45,18 @@ public class LoginController extends HttpServlet {
 			Utente u;
 			try {
 				LoginAction f = new LoginAction();
-//				u = f.login(username, password);
 				u = f.esegui(request);
 
 				if(u!= null){
 
-
 					HttpSession sessione = request.getSession();
-					
-					
-					
 					sessione.setAttribute("utente", u);    // parametro utente accessibile da ogni classe
 					
-					nextPage = "/provaLogin.jsp";
+					if(u.getRuolo().equals("admin"))
+						nextPage = "/loginEffettuatoAmministratore.jsp";
+					
+					if(u.getRuolo().equals("user"))
+						nextPage = "/loginEffettuatoPaziente.jsp";
 					
 //					String ruolo = u.getRuolo();
 //					if(ruolo.equals("admin")){
