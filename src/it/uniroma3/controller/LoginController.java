@@ -21,7 +21,6 @@ public class LoginController extends HttpServlet {
 			throws ServletException, IOException {
 
 
-
 		// leggo i parametri
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
