@@ -11,6 +11,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 
+import it.uniroma3.persistence.PrenotazioneDaoJPA;
 import it.uniroma3.persistence.RisultatoEsameDaoJPA;
 import it.uniroma3.persistence.TipologiaEsameDaoJPA;
 import it.uniroma3.persistence.UtenteDaoJPA;
@@ -86,6 +87,12 @@ public class Facade {
 		utenteDao.save(e);
 	}
 	
+    //inserimento di una prenotazione
+	public void inserisciPrenotazione(Prenotazione p) {
+		PrenotazioneDaoJPA prenotaDao = new PrenotazioneDaoJPA(em);
+		prenotaDao.save(p);
+	}
+	
     //restituisci tutti gli utenti attualmente istanziati nel database
 	public List<Utente> getAllUtenti() {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
@@ -104,6 +111,18 @@ public class Facade {
 	public Utente getUtenteByID(Long id) {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
 		Utente utente = utenteDao.findByPrimaryKey(id);
+		return utente;
+	}
+	
+	public TipologiaEsame findById(Long id) {
+		TipologiaEsameDaoJPA tipologiaDao = new TipologiaEsameDaoJPA(em);
+		TipologiaEsame esame = tipologiaDao.findByPrimaryKey(id);
+		return esame;
+	}
+
+	public Utente getByCodFiscale(String codFis) {
+		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
+		Utente utente = utenteDao.findByCodFiscale(codFis);
 		return utente;
 	}
 	

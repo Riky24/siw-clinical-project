@@ -68,6 +68,8 @@ public class PrenotazioneController extends HttpServlet  {
 				Prenotazione p = new Prenotazione();
 				p.setUtente(u);
 				p.setTipologiaEsame(t);
+				
+				f.inserisciPrenotazione(p);
 			}
 			
 		}
