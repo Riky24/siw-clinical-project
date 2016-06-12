@@ -70,6 +70,8 @@ public class PrenotazioneController extends HttpServlet  {
 				p.setTipologiaEsame(t);
 				
 				f.inserisciPrenotazione(p);
+				
+				nextpage = "/confermaPrenotazione.jsp";
 			}
 			
 		}
