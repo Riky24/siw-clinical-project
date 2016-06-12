@@ -39,6 +39,10 @@
 <form action=inserisciTipologiaEsame.jsp>
 		<input type="submit" value="inserisci una tipologia di esame">
 	</form>
+	
+<form action=creaPrenotazione.jsp>
+		<input type="submit" value="Prenota un esame">
+	</form>
 
 <form action="/siw-clinical-project/logoutcontroller" method="post">
 		<button type="submit" name="logout" class="btn btn-default"
