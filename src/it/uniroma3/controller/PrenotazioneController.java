@@ -18,14 +18,14 @@ import it.uniroma3.modelli.Utente;
 
 @WebServlet("/prenotazioneController")
 public class PrenotazioneController extends HttpServlet  {
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	//	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		request.setAttribute("loginError", "Effettua il login");
-//		ServletContext servletContext = getServletContext();
-//		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
-//		rd.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	//		request.setAttribute("loginError", "Effettua il login");
+	//		ServletContext servletContext = getServletContext();
+	//		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
+	//		rd.forward(request, response);
+	//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	//	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -35,47 +35,49 @@ public class PrenotazioneController extends HttpServlet  {
 		HttpSession s = request.getSession();
 		String nextpage;
 
-//		Utente utente = (Utente)s.getAttribute("utente");
-//		if(utente==null || utente.getRuolo().equals("user")){
-//			if (utente.getRuolo().equals("user")) {
-//				request.setAttribute("loginError", "Effettua il login come amministratore");
-//			} else
-//				request.setAttribute("loginError", "Effettua il login");
-//			nextpage = "/effettuaLogin.jsp";
-//		}else{
-			
-			nextpage = "/creaPrenotazione.jsp";
-			
-			String codFis = request.getParameter("codFis");
-			String idTipologiaEsame = request.getParameter("tipologia");
+		//		Utente utente = (Utente)s.getAttribute("utente");
+		//		if(utente==null || utente.getRuolo().equals("user")){
+		//			if (utente.getRuolo().equals("user")) {
+		//				request.setAttribute("loginError", "Effettua il login come amministratore");
+		//			} else
+		//				request.setAttribute("loginError", "Effettua il login");
+		//			nextpage = "/effettuaLogin.jsp";
+		//		}else{
+
+		nextpage = "/creaPrenotazione.jsp";
+
+		Facade f = new Facade();
+		f.istanziaEntityManager();
+		String str = f.generaSelectTipologia();
+		request.setAttribute("string", str);
+
+		String codFis = request.getParameter("codFis");
+		String idTipologiaEsame = request.getParameter("tipologia");
+
+		if(idTipologiaEsame!=null){
+			System.out.println(idTipologiaEsame);
 			boolean errore = false;
-			
 			if(codFis.equals("")){
 				request.setAttribute("pazienteError", "Selezionare un paziente");
 				errore = true;
 			}
-			if(idTipologiaEsame==null){
-				request.setAttribute("tipologiaError", "Selezionare una tipologia di esame");
-				errore = true;
-			}
 			if(!errore){
-				Facade f = new Facade();
-				f.istanziaEntityManager();
-				Utente u = f.getByCodFiscale(codFis);
-				
+								Utente u = f.getByCodFiscale(codFis);
+
 				Long tipId = Long.parseLong(idTipologiaEsame);
-				TipologiaEsame t = f.findById(tipId);
-				
+								TipologiaEsame t = f.findById(tipId);
+
 				Prenotazione p = new Prenotazione();
-				p.setUtente(u);
-				p.setTipologiaEsame(t);
-				
+								p.setUtente(u);
+								p.setTipologiaEsame(t);
+
 				f.inserisciPrenotazione(p);
-				
+
 				nextpage = "/confermaPrenotazione.jsp";
 			}
-			
-//		}
+		}
+
+		//		}
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextpage);
 		rd.forward(request, response);

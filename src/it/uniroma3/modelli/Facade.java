@@ -133,6 +133,23 @@ public class Facade {
 		return utente;
 	}
 	
+	public String generaSelectTipologia(){
+		String select = "<select id=\"tesam\" name=\"tesam\">";
+		TipologiaEsameDaoJPA tipologie = new TipologiaEsameDaoJPA(em);
+		List<TipologiaEsame> list = tipologie.findAll();
+		for(TipologiaEsame x: list){
+			select += "<option value=\""+x.getId()+"\">"+x.getNome()+"</option>";
+			}
+		return select+="</select>";
+	}
+	
+	public String generaProva(){
+		String select = "<select id=\"tesam\" name=\"tesam\">\n";
+		select += "<option value=\""+"1"+"\">"+"sangue"+"</option>\n";
+		select += "<option value=\""+"2"+"\">"+"vista"+"</option>\n";
+		return select+="</select>";
+	}
+	
 	//restituisci i risultati del paziente il cui id è passato come parametro
 //	public List<RisultatoEsame> trovaEsamiPaziente(Long id) {
 //		RisultatoEsameDaoJPA risultatoEsame = new RisultatoEsameDaoJPA(em);

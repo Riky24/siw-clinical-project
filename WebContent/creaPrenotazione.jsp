@@ -9,25 +9,23 @@
 <title>Prenotazione</title>
 </head>
 <body>
-	<form action="prenotazioneController" method="post">
+	<form name="prenota" action="prenotazioneController" method="post">
 	<p>${pazienteError}</p>
 		Codice Fiscale del paziente<input type="text" name="codFis" value='${param["codFis"]}'>
 	<p>codice fiscale = codice+Nome</p>
-	<p>${tipologiaError}</p>
+	<input type="hidden" name="string" value='${string}'>
 	<div>
 	<script type="text/javascript">
-	document.write("<select id=\"tesam\" name=\"tesam\">");
-	var f = new Facade();
-	f.istanziaEntityManager();
-	var list = f.getTipologieEsami();
-	for (var x in list){
-		document.write('<option value="'+x.getId()+'">'+x.getNome()+'</option>');
-	}
-	document.write("</select>");
+	var str = document.forms.prenota.string.value;
+	document.write(str);
 	</script>
+	<script type="text/javascript">
+	var tip = document.forms.prenota.tesam.value;
+	document.write('<input type="hidden" name="tip" value=\"'+tip+'\">');
+	</script>
+	<input type="hidden" name="tipologia" value='${param["tipologia"]}'>
 	</div>
-	<input type="hidden" name="prova" value='${param["tipologia"]}'>
-	<input type="submit" name="ok" value="Prenota">
+    <input type="submit" name="prenota" value="Prenota">
 	</form>
 </body>
 </html>
