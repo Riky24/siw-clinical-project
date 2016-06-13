@@ -17,7 +17,7 @@
 	<div>
 	<script type="text/javascript">
 	document.write("<select id=\"tesam\" name=\"tesam\">");
-	var f = Java.type("it.uniroma3.modelli.Facade");
+	var f = new Facade();
 	f.istanziaEntityManager();
 	var list = f.getTipologieEsami();
 	for (var x in list){
