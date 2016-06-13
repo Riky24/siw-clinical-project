@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    <%@ page import="it.uniroma3.modelli.*"%>
     <%@ page import="java.util.*"%>
-<%@ page import="it.uniroma3.modelli.*"%>
     
             <% Utente utente = (Utente)session.getAttribute("utente");
     	if (utente == null || utente.getRuolo().equals("admin")) {
@@ -23,7 +23,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<title>Risultati</title>
+<title>Insert title here</title>
 </head>
 <style>
 body {
@@ -34,32 +34,32 @@ body {
 </style>
 <body>
 
-<h2>Ecco i tuoi risultati</h2>
+<h1 align="center">Dettagli sull'esame selezionato<span></span></h1>
 
 	<%
-		List<RisultatoEsame> r = (ArrayList<RisultatoEsame>) session.getAttribute("risultati");
+	RisultatoEsame p = (RisultatoEsame) request.getAttribute("risultatoo");
+// 	List<Indicatore> i = (ArrayList<Indicatore>) session.getAttribute("ind");
 	%>
 
-
+<div id="form" align="center">
+<%-- 	<b>CodiceProdotto</b>: <%=p.getCodiceProdotto()%><br />  --%>
+	<b><%=p.getNome()%></b>
 
 			<%
-				for (RisultatoEsame ris : r) {
+				for (Indicatore indi : p.getIndicatori()) {
 			%>
-
-
-<li>Nome: <b><%=ris.getNome()%></b>
-					<form action="dettagliRisultatoEsameController" method="post">
-						<button type="submit" name="nomeRis" class="btn btn-lg btn-primary" 
-						value="<%=ris.getId()%>">Visualizza dettagli</button>
-					</form></li>
-
+<tr>
+<li>Nome: <b><%=indi.getNome()%></b>
+&nbsp;&nbsp;Valore: <b><%=indi.getValore()%></b></li>
+</tr>
 
 				<%
  					}
  				%>
- 				
- 							<form action=loginEffettuatoPaziente.jsp>
-		<input type="submit" value="Torna alla pagina utente" class="btn btn-lg btn-info">
-	</form>
+	<form action=risultatiEsamiPaziente.jsp>
+		<input type="submit" value="Indietro" class="btn btn-lg btn-info">
+			</form>
+	</div>
+
 </body>
 </html>

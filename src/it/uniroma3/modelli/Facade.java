@@ -113,20 +113,26 @@ public class Facade {
 		List<RisultatoEsame> risultatiEsami = risultatoEsameDao.findAll();
 		return risultatiEsami;
 	}
+
 	
-    //restituisci tutti gli utenti attualmente istanziati nel database
 	public Utente getUtenteByID(Long id) {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
 		Utente utente = utenteDao.findByPrimaryKey(id);
 		return utente;
 	}
-	
-	public TipologiaEsame findById(Long id) {
+
+	public RisultatoEsame getRisultatoByID(Long id) {
+		RisultatoEsameDaoJPA risultatoEsameDao = new RisultatoEsameDaoJPA(em);
+		RisultatoEsame risultatoEsame = risultatoEsameDao.findByPrimaryKey(id);
+		return risultatoEsame;
+	}
+
+	public TipologiaEsame getTipologiaByID(Long id) {
 		TipologiaEsameDaoJPA tipologiaDao = new TipologiaEsameDaoJPA(em);
 		TipologiaEsame esame = tipologiaDao.findByPrimaryKey(id);
 		return esame;
 	}
-
+	
 	public Utente getByCodFiscale(String codFis) {
 		UtenteDaoJPA utenteDao = new UtenteDaoJPA(em);
 		Utente utente = utenteDao.findByCodFiscale(codFis);

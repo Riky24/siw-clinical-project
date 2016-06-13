@@ -6,8 +6,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <title>Prenotazione</title>
 </head>
+<style>
+body {
+    background-color: lightgreen;
+            color: #000000;
+    text-align: center;
+}
+</style>
 <body>
 	<form name="prenota" action="prenotazioneController" method="post">
 	<p>${pazienteError}</p>

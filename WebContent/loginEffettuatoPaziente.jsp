@@ -3,13 +3,6 @@
     <%@ page import="it.uniroma3.modelli.Utente" %>
     
         <% Utente utente = (Utente)session.getAttribute("utente");
-//        if(utente==null) {
-//    		request.setAttribute("loginError", "Devi effettuare il login");
-//    		out.clear();
-//    		RequestDispatcher rd = application.getRequestDispatcher("/effettuaLogin.jsp");
-//           rd.forward(request, response);
-//           return;
-//        }
     	if (utente == null || utente.getRuolo().equals("admin")) {
     		if (utente == null) {
     			request.setAttribute("loginError", "Devi effettuare il login");
@@ -26,8 +19,18 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <title>Riepilogo dati</title>
 </head>
+<style>
+body {
+    background-color: lightgreen;
+        color: #000000;
+    text-align: center;
+}
+</style>
+
 <body>
 <p>Username: ${utente.username};</p>
 <p>Password: ${utente.password};</p>
@@ -37,11 +40,11 @@
 <p>Ruolo: ${utente.ruolo};</p>
 
 <form action=visualizzaRisultatiEsamiController method="post">
-		<input type="submit" value="Visualizza i risultati dei tuoi esami">
+		<input type="submit" value="Visualizza i risultati dei tuoi esami" class="btn btn-lg btn-primary">
 	</form>
 
 <form action="/siw-clinical-project/logoutcontroller" method="post">
-		<button type="submit" name="logout" class="btn btn-default"
+		<button type="submit" name="logout" class="btn btn-lg btn-danger"
 			value="logout">Logout</button>
 	</form>
 </body>

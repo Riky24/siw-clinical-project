@@ -45,7 +45,7 @@ public class RisultatoEsameDaoJPA implements RisultatoEsameDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<RisultatoEsame> findAll() {
-		List<RisultatoEsame> risultatoEsame = em.createQuery("RisultatoEsame.findAll").getResultList();
+		List<RisultatoEsame> risultatoEsame = em.createNamedQuery("RisultatoEsame.findAll").getResultList();
 		return risultatoEsame;
 	}
 

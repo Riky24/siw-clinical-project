@@ -20,8 +20,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <title>Tipologia di esame</title>
 </head>
+<style>
+body {
+    background-color: lightgreen;
+        color: #000000;
+    text-align: center;
+}
+</style>
 <body>
 
 	<h1>Dati inseriti della tipologia di esame</h1>
@@ -35,7 +44,7 @@
 	</ul>
 
 	<form action=inserisciTipologiaEsame.jsp>
-		<input type="submit" value="Indietro">
+		<input type="submit" value="Indietro" class="btn btn-lg btn-info">
 	</form>
 </body>
 </html>

@@ -78,4 +78,7 @@ public class RisultatoEsame {
 		this.indicatori.add(p);
 	}
 
+	public List<Indicatore> getIndicatori() {
+		return indicatori;
+	}
 }

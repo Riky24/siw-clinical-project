@@ -14,7 +14,7 @@
     		rd.forward(request, response);
     		return;
     	}
-    %>
+     %> 
 
 <%
 	TipologiaEsame tipologiaEsame = (TipologiaEsame) session.getAttribute("tip");
@@ -24,8 +24,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <title>Inserimento tipologia esame</title>
 </head>
+<style>
+body {
+    background-color: lightgreen;
+        color: #000000;
+    text-align: center;
+}
+</style>
 <body>
 
 	<div>
@@ -86,14 +95,14 @@
 							name="valorePrerequisito" value='${param["valorePrerequisito"]}' />
 					</div>
 
-					<button type="submit" name="bt" value="salva">Salva</button>
-					<button type="submit" name="bt" value="inserisciAltriPrerequisiti">Aggiungi
+					<button type="submit" name="bt" value="salva" class="btn btn-lg btn-primary">Salva</button>
+					<button type="submit" name="bt" value="inserisciAltriPrerequisiti" class="btn btn-lg btn-primary">Aggiungi
 						un altro prerequisito</button>
 
 				</form>
 
 	<form action=loginEffettuatoAmministratore.jsp>
-		<input type="submit" value="Torna alla pagina utente">
+		<input type="submit" value="Torna alla pagina utente" class="btn btn-lg btn-info">
 	</form>
 
 			</div>
