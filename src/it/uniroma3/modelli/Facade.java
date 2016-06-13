@@ -100,6 +100,13 @@ public class Facade {
 		return utenti;
 	}
 	
+    //restituisci tutte le tipologie Esame
+	public List<TipologiaEsame> getTipologieEsami() {
+		TipologiaEsameDaoJPA tipologiaEsameDao = new TipologiaEsameDaoJPA(em);
+		List<TipologiaEsame> tipologiaEsami = tipologiaEsameDao.findAll();
+		return tipologiaEsami;
+	}
+	
     //restituisci tutti gli utenti attualmente istanziati nel database
 	public List<RisultatoEsame> getAllRisultatoEsame() {
 		RisultatoEsameDaoJPA risultatoEsameDao = new RisultatoEsameDaoJPA(em);

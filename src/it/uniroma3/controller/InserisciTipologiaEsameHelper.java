@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 public class InserisciTipologiaEsameHelper {
 
 	
-	public boolean validate(HttpServletRequest request, HttpServletResponse response) {
+	public boolean validate(HttpServletRequest request) {
 		
 		boolean corretto = true;
 		

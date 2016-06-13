@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.TipologiaEsame;
+import it.uniroma3.modelli.Utente;
 
 
 
@@ -34,9 +35,11 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	}
 	
 //faccio una query per la lista degli tipologie esame
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<TipologiaEsame> findAll() {
-		List<TipologiaEsame> esamiOfferti = em.createQuery("SELECT o FROM tipologiaesame o").getResultList();
+//		List<TipologiaEsame> esamiOfferti = (List<TipologiaEsame>)em.createQuery("SELECT o FROM tipologiaesame o").getResultList();
+		List<TipologiaEsame> esamiOfferti = em.createNamedQuery("TipologiaEsame.findAll").getResultList();
 		return esamiOfferti;
 	}
 

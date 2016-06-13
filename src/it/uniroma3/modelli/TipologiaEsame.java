@@ -14,11 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
 
 
 @Entity
+@NamedQuery(name = "TipologiaEsame.findAll", query = "select c from TipologiaEsame c")
 public class TipologiaEsame {
 	
 	public TipologiaEsame(){

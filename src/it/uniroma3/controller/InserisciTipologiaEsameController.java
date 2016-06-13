@@ -48,14 +48,14 @@ public class InserisciTipologiaEsameController extends HttpServlet  {
 		
 		//salva l'oggetto 'tipologiaEsame' nel database
 		if(bt.equals("salva")) {
-			if(iteHelper.validate(request,response)) {
+			if(iteHelper.validate(request)) {
 				nextpage = iteAction.execute(request, tipologiaEsame);
 			}
 		}
 		
 		//lega la 'tipologiaEsame' con l'oggetto 'prerequisito' per poi salvarlo nella sessione
 		if(bt.equals("inserisciAltriPrerequisiti")) {
-			if(iteHelper.validate(request,response)) {
+			if(iteHelper.validate(request)) {
 				tipologiaEsame.setCodice(request.getParameter("codice"));
 				tipologiaEsame.setNome(request.getParameter("nome"));
 				tipologiaEsame.setCosto(request.getParameter("costo"));
