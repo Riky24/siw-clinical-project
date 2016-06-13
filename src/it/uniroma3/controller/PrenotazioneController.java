@@ -64,7 +64,7 @@ public class PrenotazioneController extends HttpServlet  {
 				Utente u = f.getByCodFiscale(codFis);
 				
 				Long tipId = Long.parseLong(idTipologiaEsame);
-				TipologiaEsame t = f.findById(tipId);
+				TipologiaEsame t = f.getTipologiaByID(tipId);
 				
 				Prenotazione p = new Prenotazione();
 				p.setUtente(u);

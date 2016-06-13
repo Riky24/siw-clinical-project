@@ -1,5 +1,6 @@
 package it.uniroma3.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +18,12 @@ public class VisualizzaRisultatiEsamiAction {
 		facade.istanziaEntityManager();
 //		List<RisultatoEsame> r = facade.trovaEsamiPaziente(utente.getId());
 		List<RisultatoEsame> r = facade.getAllRisultatoEsame();
-		return r;
+		List<RisultatoEsame> r1 =  new ArrayList<>();
+		for(RisultatoEsame rr : r) {
+			if(rr.getUtente().equals(utente))
+				r1.add(rr);
+		}
+		return r1;
 	}
 	
 }
