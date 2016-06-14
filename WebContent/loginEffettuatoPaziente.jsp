@@ -29,16 +29,25 @@ body {
         color: #000000;
     text-align: center;
 }
+div.well {
+	
+	border: 30px solid #000080;
+	position: well;
+	font-size: 25px;
+	font-weight: 700;
+}
+
 </style>
 
 <body>
+<div class="well">
 <p>Username: ${utente.username};</p>
 <p>Password: ${utente.password};</p>
 <p>Nome: ${utente.nome};</p>
 <p>Cognome: ${utente.cognome};</p>
 <p>Codice Fiscale: ${utente.codiceFiscale};</p>
 <p>Ruolo: ${utente.ruolo};</p>
-
+</div>
 <form action=visualizzaRisultatiEsamiController method="post">
 		<input type="submit" value="Visualizza i risultati dei tuoi esami" class="btn btn-lg btn-primary">
 	</form>

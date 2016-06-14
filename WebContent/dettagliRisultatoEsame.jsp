@@ -31,16 +31,24 @@ body {
         color: #000000;
     text-align: center;
 }
+div.well {
+	position: well;
+	font-size: 25px;
+}
+h2 {
+	
+	font-size: 35px;
+}
 </style>
 <body>
 
-<h1 align="center">Dettagli sull'esame selezionato<span></span></h1>
+<h2 align="center">Dettagli sull'esame selezionato<span></span></h2>
 
 	<%
 	RisultatoEsame p = (RisultatoEsame) request.getAttribute("risultatoo");
 	%>
 
-<div id="form" align="center">
+<div class="well" id="ff" align="center">
 	<b><%=p.getNome()%></b>
 
 			<%

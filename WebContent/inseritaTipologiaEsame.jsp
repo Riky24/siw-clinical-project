@@ -30,10 +30,17 @@ body {
         color: #000000;
     text-align: center;
 }
+div.ff {
+	position: ff;
+	font-size: 25px;
+}
 </style>
 <body>
 
-	<h1>Dati inseriti della tipologia di esame</h1>
+<div class="ff">
+	<h1>Dati della tipologia di esame inseriti</h1>
+				<p>Questo esame sarà visibile nella sezione 'Esami offerti' accessibile dalla pagina iniziale</p>
+	</div>
 	<ul>
 		<li>Codice: <b>${tipologiaEsame.codice}</b></li>
 		<!-- accedo alla chiave etichettata (nella sessione) come "studente" e invoco su quell'oggetto il metodo getMatricola() -->
