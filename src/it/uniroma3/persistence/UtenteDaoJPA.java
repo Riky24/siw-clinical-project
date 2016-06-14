@@ -60,6 +60,7 @@ public class UtenteDaoJPA implements UtenteDao {
 	
 	public Utente findByCodFiscale(String codFis) {
 		em.createQuery("select u from Utente u where u.codiceFiscale like :codFis").setParameter("codFis", codFis).getSingleResult();
-		return null;
+
+  		return null;
 	}
 }

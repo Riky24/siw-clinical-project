@@ -143,11 +143,15 @@ public class Main {
 		risultatoEsameDao.save(r1);
 		risultatoEsameDao.save(r2);
 		
-//		List<RisultatoEsame> r = risultatoEsameDao.findAll();
+		
+		
+//		RisultatoEsame we = risultatoEsameDao.findByPrimaryKey(r1.getId());
+		
+//		List<Indicatore> r = we.getIndicatori();
 		
 //		List<Utente> uuu = utentiDao.findAll();
 		
-//		for(RisultatoEsame ll : r)
+//		for(Indicatore ll : r)
 //			System.out.println(ll.getNome());
 		
 //		for(Utente lll : uuu)

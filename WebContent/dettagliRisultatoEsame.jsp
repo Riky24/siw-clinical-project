@@ -23,7 +23,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>Dettagli risultato</title>
 </head>
 <style>
 body {
@@ -31,18 +31,24 @@ body {
         color: #000000;
     text-align: center;
 }
+div.well {
+	position: well;
+	font-size: 25px;
+}
+h2 {
+	
+	font-size: 35px;
+}
 </style>
 <body>
 
-<h1 align="center">Dettagli sull'esame selezionato<span></span></h1>
+<h2 align="center">Dettagli sull'esame selezionato<span></span></h2>
 
 	<%
 	RisultatoEsame p = (RisultatoEsame) request.getAttribute("risultatoo");
-// 	List<Indicatore> i = (ArrayList<Indicatore>) session.getAttribute("ind");
 	%>
 
-<div id="form" align="center">
-<%-- 	<b>CodiceProdotto</b>: <%=p.getCodiceProdotto()%><br />  --%>
+<div class="well" id="ff" align="center">
 	<b><%=p.getNome()%></b>
 
 			<%

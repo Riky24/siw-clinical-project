@@ -34,6 +34,10 @@ body {
         color: #000000;
     text-align: center;
 }
+div.form_container {
+	position: form_container;
+	font-size: 25px;
+}
 </style>
 <body>
 

@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -9,18 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import it.uniroma3.modelli.TipologiaEsame;
+import it.uniroma3.modelli.Utente;
 
 /**
- * Servlet implementation class PaginaInizialeController
+ * Servlet implementation class VisualizzaTipologieEsamiController
  */
-@WebServlet("/paginaInizialeController")
-public class PaginaInizialeController extends HttpServlet {
+@WebServlet("/visualizzaTipologieEsamiController")
+public class VisualizzaTipologieEsamiController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaginaInizialeController() {
+    public VisualizzaTipologieEsamiController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,19 +42,24 @@ public class PaginaInizialeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
+		String nextpage = "/elencoTipologieEsami.jsp";
 		
-		String nextpage = "/effettuaLogin.jsp";
+		VisualizzaTipologieEsamiAction vtea = new VisualizzaTipologieEsamiAction();
 		
 		PaginaInizialeAction pia = new PaginaInizialeAction();
-		
 		try {
 			pia.inizializzaDatabase();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		// inoltro la richiesta alla pagina jsp dedicata
+		HttpSession s = request.getSession();
+//		Utente utente = (Utente)s.getAttribute("utente");
+		
+		List<TipologiaEsame> r = vtea.execute();
+		s.setAttribute("tipologie", r);
+		
 		nextpage = response.encodeURL(nextpage);
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextpage);

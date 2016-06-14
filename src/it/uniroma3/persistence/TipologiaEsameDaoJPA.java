@@ -38,7 +38,6 @@ public class TipologiaEsameDaoJPA implements TipologiaEsameDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<TipologiaEsame> findAll() {
-//		List<TipologiaEsame> esamiOfferti = (List<TipologiaEsame>)em.createQuery("SELECT o FROM tipologiaesame o").getResultList();
 		List<TipologiaEsame> esamiOfferti = em.createNamedQuery("TipologiaEsame.findAll").getResultList();
 		return esamiOfferti;
 	}

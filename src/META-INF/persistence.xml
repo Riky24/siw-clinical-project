@@ -7,6 +7,8 @@
 		<class>it.uniroma3.modelli.Utente</class>
 		<class>it.uniroma3.modelli.Prerequisito</class>
 		<class>it.uniroma3.modelli.TipologiaEsame</class>
+		<class>it.uniroma3.modelli.Indicatore</class>
+		<class>it.uniroma3.modelli.RisultatoEsame</class>
 		<class>it.uniroma3.modelli.Prenotazione</class>
 		<class>it.uniroma3.modelli.Main</class>
 		<properties>

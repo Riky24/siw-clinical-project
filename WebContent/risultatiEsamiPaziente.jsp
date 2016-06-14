@@ -31,6 +31,10 @@ body {
         color: #000000;
     text-align: center;
 }
+li {
+    background-color: lightgreen;
+font-size: 25px;
+}
 </style>
 <body>
 
@@ -47,7 +51,7 @@ body {
 			%>
 
 
-<li>Nome: <b><%=ris.getNome()%></b>
+<li><b><%=ris.getNome()%></b>
 					<form action="dettagliRisultatoEsameController" method="post">
 						<button type="submit" name="nomeRis" class="btn btn-lg btn-primary" 
 						value="<%=ris.getId()%>">Visualizza dettagli</button>
