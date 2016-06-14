@@ -18,14 +18,14 @@ import it.uniroma3.modelli.Utente;
 
 @WebServlet("/prenotazioneController")
 public class PrenotazioneController extends HttpServlet  {
-		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	//		request.setAttribute("loginError", "Effettua il login");
-	//		ServletContext servletContext = getServletContext();
-	//		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
-	//		rd.forward(request, response);
-			response.getWriter().append("Served at: ").append(request.getContextPath());
-		}
+		//		request.setAttribute("loginError", "Effettua il login");
+		//		ServletContext servletContext = getServletContext();
+		//		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
+		//		rd.forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -62,14 +62,14 @@ public class PrenotazioneController extends HttpServlet  {
 				errore = true;
 			}
 			if(!errore){
-								Utente u = f.getByCodFiscale(codFis);
+				Utente u = f.getByCodFiscale(codFis);
 
 				Long tipId = Long.parseLong(idTipologiaEsame);
 				TipologiaEsame t = f.getTipologiaByID(tipId);
-				
+
 				Prenotazione p = new Prenotazione();
-								p.setUtente(u);
-								p.setTipologiaEsame(t);
+				p.setUtente(u);
+				p.setTipologiaEsame(t);
 
 				f.inserisciPrenotazione(p);
 
