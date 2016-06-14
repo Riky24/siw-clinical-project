@@ -28,10 +28,10 @@ body {
 	var str = document.forms.prenota.string.value;
 	document.write(str);
 	</script>
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 	var tip = document.forms.prenota.tesam.value;
-	document.write('<input type="hidden" name="tip" value=\"'+tip+'\">');
-	</script>
+	document.write('<input type=\"hidden\" name=\"tip\" value=\"'+tip+'\">');
+	</script> -->
 	<input type="hidden" name="tipologia" value='${param["tipologia"]}'>
 	</div>
     <input type="submit" name="prenota" value="Prenota">

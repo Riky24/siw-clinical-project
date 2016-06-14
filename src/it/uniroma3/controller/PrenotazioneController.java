@@ -20,11 +20,9 @@ import it.uniroma3.modelli.Utente;
 public class PrenotazioneController extends HttpServlet  {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//		request.setAttribute("loginError", "Effettua il login");
-		//		ServletContext servletContext = getServletContext();
-		//		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
-		//		rd.forward(request, response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		ServletContext servletContext = getServletContext();
+		RequestDispatcher rd = servletContext.getRequestDispatcher("/effettuaLogin.jsp");
+		rd.forward(request, response);
 	}
 
 	@Override
@@ -55,7 +53,6 @@ public class PrenotazioneController extends HttpServlet  {
 		String idTipologiaEsame = request.getParameter("tipologia");
 
 		if(idTipologiaEsame!=null){
-			System.out.println(idTipologiaEsame);
 			boolean errore = false;
 			if(codFis.equals("")){
 				request.setAttribute("pazienteError", "Selezionare un paziente");
@@ -63,19 +60,21 @@ public class PrenotazioneController extends HttpServlet  {
 			}
 			if(!errore){
 				Utente u = f.getByCodFiscale(codFis);
+				if(!(idTipologiaEsame.equals(""))){
+					Long tipId = Long.parseLong(idTipologiaEsame);
+					TipologiaEsame t = f.getTipologiaByID(tipId);
 
-				Long tipId = Long.parseLong(idTipologiaEsame);
-				TipologiaEsame t = f.getTipologiaByID(tipId);
+					Prenotazione p = new Prenotazione();
+					p.setUtente(u);
+					p.setTipologiaEsame(t);
 
-				Prenotazione p = new Prenotazione();
-				p.setUtente(u);
-				p.setTipologiaEsame(t);
+					f.inserisciPrenotazione(p);
 
-				f.inserisciPrenotazione(p);
-
-				nextpage = "/confermaPrenotazione.jsp";
+					nextpage = "/confermaPrenotazione.jsp";
+				}
 			}
 		}
+
 
 		//		}
 		ServletContext servletContext = getServletContext();
