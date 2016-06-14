@@ -23,7 +23,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<title>Insert title here</title>
+<title>Dettagli risultato</title>
 </head>
 <style>
 body {
@@ -38,11 +38,9 @@ body {
 
 	<%
 	RisultatoEsame p = (RisultatoEsame) request.getAttribute("risultatoo");
-// 	List<Indicatore> i = (ArrayList<Indicatore>) session.getAttribute("ind");
 	%>
 
 <div id="form" align="center">
-<%-- 	<b>CodiceProdotto</b>: <%=p.getCodiceProdotto()%><br />  --%>
 	<b><%=p.getNome()%></b>
 
 			<%

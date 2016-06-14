@@ -1,6 +1,7 @@
 package it.uniroma3.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -10,17 +11,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.uniroma3.modelli.Indicatore;
+import it.uniroma3.modelli.TipologiaEsame;
+
 /**
- * Servlet implementation class PaginaInizialeController
+ * Servlet implementation class DettagliTipologiaEsameController
  */
-@WebServlet("/paginaInizialeController")
-public class PaginaInizialeController extends HttpServlet {
+@WebServlet("/dettagliTipologiaEsameController")
+public class DettagliTipologiaEsameController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaginaInizialeController() {
+    public DettagliTipologiaEsameController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,19 +41,18 @@ public class PaginaInizialeController extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String nextpage = "/effettuaLogin.jsp";
+		String nextpage = "/dettagliTipologiaEsame.jsp";
 		
-		PaginaInizialeAction pia = new PaginaInizialeAction();
+		DettagliTipologiaEsameAction dtea = new DettagliTipologiaEsameAction();
 		
-		try {
-			pia.inizializzaDatabase();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		Long ris = Long.parseLong(request.getParameter("nomeTip"));
 		
-		// inoltro la richiesta alla pagina jsp dedicata
+		TipologiaEsame r = dtea.execute(ris);
+		
+//		List<Prerequisito> i = r.getPrerequisito();
+		request.setAttribute("prerequisitoo", r);
+		
 		nextpage = response.encodeURL(nextpage);
 		ServletContext servletContext = getServletContext();
 		RequestDispatcher rd = servletContext.getRequestDispatcher(nextpage);

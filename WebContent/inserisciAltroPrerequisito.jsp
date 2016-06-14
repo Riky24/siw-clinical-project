@@ -35,6 +35,9 @@ body {
         color: #000000;
     text-align: center;
 }
+p {
+text-align: left;
+}
 </style>
 <body>
 

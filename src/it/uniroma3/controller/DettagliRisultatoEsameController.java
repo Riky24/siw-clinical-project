@@ -55,8 +55,7 @@ public class DettagliRisultatoEsameController extends HttpServlet {
 		List<Indicatore> i = r.getIndicatori();
 		request.setAttribute("risultatoo", r);
 		
-//		HttpSession s = request.getSession();
-//		s.setAttribute("ind", i);
+		
 		
 		nextpage = response.encodeURL(nextpage);
 		ServletContext servletContext = getServletContext();

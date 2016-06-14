@@ -84,6 +84,11 @@ public class TipologiaEsame {
 		return prerequisiti;
 	}
 
+	public List<Prerequisito> getListPrerequisiti() {
+		List<Prerequisito> list = new ArrayList<Prerequisito>(prerequisiti.values());
+		return list;
+	}
+	
 	public void setPrerequisiti(Map<String, Prerequisito> prerequisiti) {
 		this.prerequisiti = prerequisiti;
 	}
