@@ -1,0 +1,38 @@
+﻿Per provare tutti i casi d'uso partire dalla pagina inziale su 
+http://localhost:8080/siw-clinical-project/paginaIniziale.jsp
+
+Casi d'uso trattati:
+
+
+UC1: consulta offerta
+Per provare questo caso d'uso cliccare su 'Esami offerti'.
+Vengono visualizzate tutte le tipologie di esami messe disposizione dalla clinica. Le classi coinvolte sono VisualizzaTipologieEsamiController.java, 
+VisualizzaTipologieEsamiAction.java, DettagliTipologiaEsameController.java, DettagliTipologiaEsameAction.java, elencoTipologieEsami.jsp, dettagliTipologiaEsame.jsp
+
+
+
+UC2: crea esame (prenotazione)
+Questo caso d'uso è difettoso. Nell'acquisire i dati dal file creaPrenotazione.jsp il valore della selezione della tipologia di esame non viene acquisito per essere inviato al file
+PrenotazioneController, che quindi non può procedere alla creazione di una nuova prenotazione. Si è provato ad implementare dinamicamente la scelta della tipologia di esame con Javascript.
+Per provare questo caso d'uso cliccare su 'Effettua login'. Si dovrà poi accedere come amministratore(username: mario, password: rossi) e cliccare si 'Prenota un esame'. A questo punto 
+si dovra inserire il codice fiscale del paziente e si dovra selezionare una delle tipologie di esame disponibili dal menu di opzioni (qui avviene il problema descritto in precedenza). 
+Cliccando sul tasto "Prenota" la prenotazione verrà registrata e compararirà la pagina di conferma, da qui tramite il tasto "Prosegui" si tornerà al menu dell'aministrazione.
+Le classi coinvolte sono PrenotazioneController, creaPrenotazione.jsp, confermaPrenotazione.jsp.
+
+
+
+UC3: consulta risultati proprio esame
+Per provare questo caso d'uso cliccare su 'Effettua login'. Si dovrà poi accedere come paziente registrato(username: stefano, password: bianchi) e si potrà cominciare 
+a prendere visione dei risultati degli esami. Una volta finito si potrà effettuare il logout. Le classi coinvolte sono LoginController.java, LoginAction.java, 
+LogoutController.java, VisualizzaRisultatiEsamiController.java, VisualizzaRisultatiEsamiAction.java, DettagliRisultatoEsameAction.java, DettagliRisultatoEsameController.java,
+effettuaLogin.jsp, loginEffettuatoPaziente.jsp, risultatiEsamiPaziente.jsp, dettagliRisultatoEsame.jsp.
+
+
+
+UC4: inserimento tipologia di esame
+Per provare questo caso d'uso cliccare su 'Effettua login'. Si dovrà poi accedere come amministratore(username: mario, password: rossi) e cliccare si 'inserisci tipologia 
+di esame'. A questo punto si potranno inserire i dati della tipologia di esame, poi si potrà scegliere se salvare i dati inseriti o aggiungere altri requisiti. Se si clicca
+su 'Aggiungi un altro requisito' verrà visualizzata una pagina che richiederà di aggiungere un altro requisito(coppia chiave-valore). Si potrà quindi continuare ad aggiungere
+requisiti e salvare la tipologia di esame una volta che si è soddisfatti. Una volta finito si potrà effettuare il logout. La tipologia di esame inserita risulterà essere visibile
+tra gli 'Esami Offerti' (vedi caso d'uso UC1). Le classi coinvolte sono InserisciTipologiaEsame(Controller, Action e Helper), InserisciAltroPrerequisito(Controller, Action e Helper), 
+Login(Controller, Action), LogoutController, effettuaLogin.jsp, loginEffettuatoAmministratore.jsp, inserisciTipologiaEsame.jsp, inserisciAltroPrerequisito.jsp, inseritaTipologiaEsame.jsp.
