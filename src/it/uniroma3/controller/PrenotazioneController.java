@@ -34,6 +34,9 @@ public class PrenotazioneController extends HttpServlet  {
 		String nextpage;
 
 
+
+		
+
 		Utente utente = (Utente)s.getAttribute("utente");
 		if(utente==null || utente.getRuolo().equals("user")){
 			if (utente.getRuolo().equals("user")) {
@@ -43,9 +46,13 @@ public class PrenotazioneController extends HttpServlet  {
 			nextpage = "/effettuaLogin.jsp";
 		}else{
 
+
 			nextpage = "/creaPrenotazione.jsp";
 
 		nextpage = "/creaPrenotazione.jsp";
+
+
+			nextpage = "/creaPrenotazione.jsp";
 
 
 			Facade f = new Facade();
