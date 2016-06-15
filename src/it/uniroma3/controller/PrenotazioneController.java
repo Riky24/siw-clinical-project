@@ -32,8 +32,7 @@ public class PrenotazioneController extends HttpServlet  {
 
 		HttpSession s = request.getSession();
 		String nextpage;
-
-<<<<<<< HEAD
+		
 		Utente utente = (Utente)s.getAttribute("utente");
 		if(utente==null || utente.getRuolo().equals("user")){
 			if (utente.getRuolo().equals("user")) {
@@ -44,9 +43,6 @@ public class PrenotazioneController extends HttpServlet  {
 		}else{
 
 			nextpage = "/creaPrenotazione.jsp";
-=======
-		nextpage = "/creaPrenotazione.jsp";
->>>>>>> branch 'master' of https://github.com/Riky24/siw-clinical-project.git
 
 			Facade f = new Facade();
 			f.istanziaEntityManager();
