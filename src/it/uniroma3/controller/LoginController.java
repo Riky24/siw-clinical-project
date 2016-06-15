@@ -57,13 +57,6 @@ public class LoginController extends HttpServlet {
 					if(u.getRuolo().equals("user"))
 						nextPage = "/loginEffettuatoPaziente.jsp";
 					
-//					String ruolo = u.getRuolo();
-//					if(ruolo.equals("admin")){
-//						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
-//					}
-//					if(ruolo.equals("user")){
-//						nextPage = "/provaLogin.jsp";                        // DA COMPLETARE
-//					}
 				}else{
 					request.setAttribute("loginError", "User o password errati");
 					nextPage = "/effettuaLogin.jsp";

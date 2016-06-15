@@ -8,7 +8,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
 import it.uniroma3.modelli.TipologiaEsame;
-import it.uniroma3.modelli.Utente;
 
 
 

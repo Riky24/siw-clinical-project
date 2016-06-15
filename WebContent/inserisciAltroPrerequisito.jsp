@@ -31,7 +31,7 @@
 </head>
 <style>
 body {
-    background-color: lightgreen;
+    background-color: #9999ff;
         color: #000000;
     text-align: center;
 }
@@ -45,7 +45,7 @@ div.form_container {
 	<h2>Inserimento altri requisiti</h2>
 
 	<div class="form_container">
-
+<div class="col-md-4 col-md-offset-4">
 		<form action="inserisciAltroPrerequisitoController" method="post">
 
 			<div class="form-group">
@@ -65,7 +65,7 @@ div.form_container {
 					class="form-control" placeholder="Valore Prerequisito"
 					name="valorePrerequisito" value='${param["valorePrerequisit"]}' />
 			</div>
-
+</div>
 <p>${prerequisitoAggiunto}</p>
 
 			<button type="submit" name="bt" value="salva" class="btn btn-lg btn-primary">Salva</button>

@@ -1,7 +1,7 @@
 package it.uniroma3.controller;
 
 import java.io.IOException;
-import java.util.List;
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.uniroma3.modelli.Indicatore;
+
 import it.uniroma3.modelli.TipologiaEsame;
 
 /**
@@ -50,7 +50,6 @@ public class DettagliTipologiaEsameController extends HttpServlet {
 		
 		TipologiaEsame r = dtea.execute(ris);
 		
-//		List<Prerequisito> i = r.getPrerequisito();
 		request.setAttribute("prerequisitoo", r);
 		
 		nextpage = response.encodeURL(nextpage);

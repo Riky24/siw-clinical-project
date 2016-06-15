@@ -1,7 +1,5 @@
 package it.uniroma3.controller;
 
-import java.io.*;
-import javax.servlet.*;
 import javax.servlet.http.*;
 import it.uniroma3.modelli.Facade;
 import it.uniroma3.modelli.Utente;

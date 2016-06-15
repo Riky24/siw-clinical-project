@@ -9,7 +9,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 
 import it.uniroma3.persistence.PrenotazioneDaoJPA;
 import it.uniroma3.persistence.RisultatoEsameDaoJPA;
@@ -155,13 +154,6 @@ public class Facade {
 		select += "<option value=\""+"2"+"\">"+"vista"+"</option>\n";
 		return select+="</select>";
 	}
-	
-	//restituisci i risultati del paziente il cui id è passato come parametro
-//	public List<RisultatoEsame> trovaEsamiPaziente(Long id) {
-//		RisultatoEsameDaoJPA risultatoEsame = new RisultatoEsameDaoJPA(em);
-//		return risultatoEsame.findByPatient(id);
-//	}
-	
 	
 	public void closeEm() {
 		em.close();

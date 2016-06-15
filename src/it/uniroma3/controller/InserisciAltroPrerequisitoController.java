@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.uniroma3.modelli.Facade;
 import it.uniroma3.modelli.Prerequisito;
 import it.uniroma3.modelli.TipologiaEsame;
 
@@ -21,20 +20,12 @@ import it.uniroma3.modelli.TipologiaEsame;
 @WebServlet("/inserisciAltroPrerequisitoController")
 public class InserisciAltroPrerequisitoController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private TipologiaEsame t;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
     public InserisciAltroPrerequisitoController() {
         super();
-        // TODO Auto-generated constructor stub
-    }
-
-    public InserisciAltroPrerequisitoController(TipologiaEsame t) {
-        super();
-        this.t = t;
         // TODO Auto-generated constructor stub
     }
     
@@ -56,10 +47,7 @@ public class InserisciAltroPrerequisitoController extends HttpServlet {
 		
 		InserisciAltroPrerequisitoAction iapAction = new InserisciAltroPrerequisitoAction();
 		InserisciAltroPrerequisitoHelper iapHelper = new InserisciAltroPrerequisitoHelper();
-		
-		
-//		Prerequisito prerequisito = new Prerequisito(request.getParameter("chiavePrerequisito"), request.getParameter("valorePrerequisito"));
-		
+			
 		HttpSession s = request.getSession();
 		TipologiaEsame tipologiaEsame = (TipologiaEsame)s.getAttribute("tip");
 		
