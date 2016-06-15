@@ -10,13 +10,14 @@
 </head>
 <style>
 body {
-    background-color: lightgreen;
+    background-color: #9999ff;
     color: #000000;
     text-align: center;
     font-size: 30px;
 }
 </style>
 <body>
+
 	<form action="logincontroller" method="post">
 
 		<p>${usernameError}</p>
@@ -31,11 +32,11 @@ body {
 <div class="col-md-4 col-md-offset-4">
 		<button type="submit" name="login" class="btn btn-lg btn-primary"
 			value="login">Login</button>
-			</div>
+			
 	</form>
 		<form action=paginaIniziale.jsp>
 		<input type="submit" value="indietro" class="btn btn-lg btn-info">
-	</form>
+	</form></div>
 <!-- 	<p>Amministratore: user - mario, password - rossi</p> -->
 <!-- 	<p>Paziente Registrato: user - stefano, password - bianchi</p> -->
 </body>

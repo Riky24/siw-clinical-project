@@ -33,15 +33,6 @@ public class PrenotazioneController extends HttpServlet  {
 		HttpSession s = request.getSession();
 		String nextpage;
 
-		//		Utente utente = (Utente)s.getAttribute("utente");
-		//		if(utente==null || utente.getRuolo().equals("user")){
-		//			if (utente.getRuolo().equals("user")) {
-		//				request.setAttribute("loginError", "Effettua il login come amministratore");
-		//			} else
-		//				request.setAttribute("loginError", "Effettua il login");
-		//			nextpage = "/effettuaLogin.jsp";
-		//		}else{
-
 		nextpage = "/creaPrenotazione.jsp";
 
 		Facade f = new Facade();

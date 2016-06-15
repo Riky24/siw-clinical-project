@@ -36,9 +36,7 @@ public class UtenteDaoJPA implements UtenteDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Utente> findAll() {
-//		List<Utente> utente = em.createQuery("SELECT o FROM utente o").getResultList();
 		List<Utente> utente = em.createNamedQuery("Utente.findAll").getResultList();
-//		em.clear();
 		return utente;
 	}
 

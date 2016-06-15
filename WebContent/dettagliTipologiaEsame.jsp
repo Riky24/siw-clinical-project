@@ -13,7 +13,7 @@
 </head>
 <style>
 body {
-    background-color: lightgreen;
+    background-color: #9999ff;
         color: #000000;
     text-align: center;
 }

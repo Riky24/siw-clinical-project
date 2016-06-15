@@ -26,12 +26,17 @@
 </head>
 <style>
 body {
-    background-color: lightgreen;
+    background-color: #9999ff;
         color: #000000;
     text-align: center;
 }
 div.ff {
 	position: ff;
+	font-size: 25px;
+}
+
+div.rt {
+	position: rt;
 	font-size: 25px;
 }
 </style>
@@ -41,6 +46,7 @@ div.ff {
 	<h1>Dati della tipologia di esame inseriti</h1>
 				<p>Questo esame sarà visibile nella sezione 'Esami offerti' accessibile dalla pagina iniziale</p>
 	</div>
+	<div class="rt">
 	<ul>
 		<li>Codice: <b>${tipologiaEsame.codice}</b></li>
 		<!-- accedo alla chiave etichettata (nella sessione) come "studente" e invoco su quell'oggetto il metodo getMatricola() -->
@@ -49,7 +55,7 @@ div.ff {
 		<li>Costo: <b>${tipologiaEsame.costo}</b></li>
 		<li>Descrizione: <b>${tipologiaEsame.descrizione}</b></li>
 	</ul>
-
+</div>
 	<form action=inserisciTipologiaEsame.jsp>
 		<input type="submit" value="Indietro" class="btn btn-lg btn-info">
 	</form>

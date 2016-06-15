@@ -33,14 +33,6 @@ public class RisultatoEsameDaoJPA implements RisultatoEsameDao {
 		return em.find(RisultatoEsame.class, id);
 	}
 	
-	
-//	public List<RisultatoEsame> findByPatient(Long id) {
-//		String q = "select * from RisultatoEsame where utente_id = " + id;
-//		List<RisultatoEsame> risultatoEsame = em.createQuery(q).getResultList();
-//		return risultatoEsame;
-//	}
-	
-	
 //faccio una query per la lista dei risultati
 	@SuppressWarnings("unchecked")
 	@Override

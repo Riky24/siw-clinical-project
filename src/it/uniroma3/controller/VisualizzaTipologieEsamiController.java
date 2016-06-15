@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.uniroma3.modelli.TipologiaEsame;
-import it.uniroma3.modelli.Utente;
 
 /**
  * Servlet implementation class VisualizzaTipologieEsamiController
@@ -55,7 +54,6 @@ public class VisualizzaTipologieEsamiController extends HttpServlet {
 		}
 		
 		HttpSession s = request.getSession();
-//		Utente utente = (Utente)s.getAttribute("utente");
 		
 		List<TipologiaEsame> r = vtea.execute();
 		s.setAttribute("tipologie", r);
